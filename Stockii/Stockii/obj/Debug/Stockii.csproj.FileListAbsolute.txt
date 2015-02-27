@@ -1,0 +1,14 @@
+D:\workspace\vs\Stockii\Stockii\bin\Debug\Stockii.exe
+D:\workspace\vs\Stockii\Stockii\bin\Debug\Stockii.pdb
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.Properties.Resources.resources
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.csproj.GenerateResource.Cache
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.exe.licenses
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.exe
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.pdb
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.MainForm.resources
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.CustomXtraGrid.resources
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.SplashScreen1.resources
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.WaitForm1.resources
+D:\workspace\vs\Stockii\Stockii\bin\Debug\Newtonsoft.Json.dll
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.csprojResolveAssemblyReference.cache
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.GroupDialog.resources

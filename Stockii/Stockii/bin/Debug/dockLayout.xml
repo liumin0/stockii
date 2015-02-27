@@ -1,0 +1,536 @@
+﻿<XtraSerializer version="1.0" application="DockManager">
+  <property name="#LayoutVersion" />
+  <property name="AllowGlyphSkinning">false</property>
+  <property name="Panels" iskey="true" value="5">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="TabText" />
+      <property name="Header" />
+      <property name="Footer" />
+      <property name="XtraActiveChildID">-1</property>
+      <property name="Tabbed">false</property>
+      <property name="DockedAsTabbedDocument">true</property>
+      <property name="TabsPosition">Bottom</property>
+      <property name="TabsScroll">false</property>
+      <property name="ImageIndex">-1</property>
+      <property name="XtraZIndex">0</property>
+      <property name="Visibility">Visible</property>
+      <property name="AllowGlyphSkinning">Default</property>
+      <property name="AllowCustomHeaderButtonsGlyphSkinning">Default</property>
+      <property name="Hint" />
+      <property name="Text">查询结果</property>
+      <property name="OriginalSize">@3,Width=200@3,Height=200</property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="AllowFloating">true</property>
+        <property name="AllowDockLeft">true</property>
+        <property name="AllowDockRight">true</property>
+        <property name="AllowDockTop">true</property>
+        <property name="AllowDockBottom">true</property>
+        <property name="AllowDockFill">true</property>
+        <property name="AllowDockAsTabbedDocument">true</property>
+        <property name="ShowMaximizeButton">true</property>
+        <property name="ShowAutoHideButton">true</property>
+        <property name="ShowCloseButton">true</property>
+        <property name="FloatOnDblClick">true</property>
+      </property>
+      <property name="XtraParentID">-10001</property>
+      <property name="XtraSavedParentID">-1</property>
+      <property name="XtraAutoHideContainerDock">Float</property>
+      <property name="ID">140df4ca-15f2-4eb8-a71a-ab8c940f6af4</property>
+      <property name="XtraID">0</property>
+      <property name="Dock">Float</property>
+      <property name="FloatLocation">@3,X=756@3,Y=552</property>
+      <property name="XtraBounds">@1,X=0@1,Y=0@4,Width=1669@3,Height=830</property>
+      <property name="FloatVertical">false</property>
+      <property name="Count">0</property>
+      <property name="SavedDock">Right</property>
+      <property name="SavedIndex">0</property>
+      <property name="SavedTabbed">false</property>
+      <property name="DockVertical">Default</property>
+      <property name="SavedMdiDocument">false</property>
+      <property name="FloatSize">@4,Width=1669@3,Height=830</property>
+    </property>
+    <property name="Item2" isnull="true" iskey="true">
+      <property name="TabText" />
+      <property name="Header" />
+      <property name="Footer" />
+      <property name="XtraActiveChildID">-1</property>
+      <property name="Tabbed">false</property>
+      <property name="DockedAsTabbedDocument">false</property>
+      <property name="TabsPosition">Bottom</property>
+      <property name="TabsScroll">false</property>
+      <property name="ImageIndex">-1</property>
+      <property name="XtraZIndex">0</property>
+      <property name="Visibility">Visible</property>
+      <property name="AllowGlyphSkinning">Default</property>
+      <property name="AllowCustomHeaderButtonsGlyphSkinning">Default</property>
+      <property name="Hint" />
+      <property name="Text">查询</property>
+      <property name="OriginalSize">@3,Width=209@3,Height=354</property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="AllowFloating">true</property>
+        <property name="AllowDockLeft">true</property>
+        <property name="AllowDockRight">true</property>
+        <property name="AllowDockTop">true</property>
+        <property name="AllowDockBottom">true</property>
+        <property name="AllowDockFill">true</property>
+        <property name="AllowDockAsTabbedDocument">true</property>
+        <property name="ShowMaximizeButton">true</property>
+        <property name="ShowAutoHideButton">true</property>
+        <property name="ShowCloseButton">true</property>
+        <property name="FloatOnDblClick">true</property>
+      </property>
+      <property name="XtraParentID">4</property>
+      <property name="XtraSavedParentID">-1</property>
+      <property name="XtraAutoHideContainerDock">Float</property>
+      <property name="ID">b13704c1-8c13-4275-b3d6-04d6edb901a1</property>
+      <property name="XtraID">1</property>
+      <property name="Dock">Fill</property>
+      <property name="FloatLocation">@1,X=0@1,Y=0</property>
+      <property name="XtraBounds">@1,X=0@1,Y=0@3,Width=209@3,Height=354</property>
+      <property name="FloatVertical">false</property>
+      <property name="Count">0</property>
+      <property name="SavedDock">Float</property>
+      <property name="SavedIndex">-1</property>
+      <property name="SavedTabbed">false</property>
+      <property name="DockVertical">Default</property>
+      <property name="SavedMdiDocument">false</property>
+      <property name="FloatSize">@3,Width=200@3,Height=200</property>
+    </property>
+    <property name="Item3" isnull="true" iskey="true">
+      <property name="TabText" />
+      <property name="Header" />
+      <property name="Footer" />
+      <property name="XtraActiveChildID">-1</property>
+      <property name="Tabbed">false</property>
+      <property name="DockedAsTabbedDocument">false</property>
+      <property name="TabsPosition">Bottom</property>
+      <property name="TabsScroll">false</property>
+      <property name="ImageIndex">-1</property>
+      <property name="XtraZIndex">1</property>
+      <property name="Visibility">Visible</property>
+      <property name="AllowGlyphSkinning">Default</property>
+      <property name="AllowCustomHeaderButtonsGlyphSkinning">Default</property>
+      <property name="Hint" />
+      <property name="Text">分组详情</property>
+      <property name="OriginalSize">@3,Width=209@3,Height=507</property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="AllowFloating">true</property>
+        <property name="AllowDockLeft">true</property>
+        <property name="AllowDockRight">true</property>
+        <property name="AllowDockTop">true</property>
+        <property name="AllowDockBottom">true</property>
+        <property name="AllowDockFill">true</property>
+        <property name="AllowDockAsTabbedDocument">true</property>
+        <property name="ShowMaximizeButton">true</property>
+        <property name="ShowAutoHideButton">true</property>
+        <property name="ShowCloseButton">false</property>
+        <property name="FloatOnDblClick">true</property>
+      </property>
+      <property name="XtraParentID">4</property>
+      <property name="XtraSavedParentID">-1</property>
+      <property name="XtraAutoHideContainerDock">Float</property>
+      <property name="ID">d37260a6-adb0-4322-81e6-e537306422c7</property>
+      <property name="XtraID">2</property>
+      <property name="Dock">Fill</property>
+      <property name="FloatLocation">@1,X=0@1,Y=0</property>
+      <property name="XtraBounds">@1,X=0@3,Y=354@3,Width=209@3,Height=507</property>
+      <property name="FloatVertical">true</property>
+      <property name="Count">0</property>
+      <property name="SavedDock">Float</property>
+      <property name="SavedIndex">-1</property>
+      <property name="SavedTabbed">false</property>
+      <property name="DockVertical">Default</property>
+      <property name="SavedMdiDocument">false</property>
+      <property name="FloatSize">@3,Width=200@3,Height=200</property>
+    </property>
+    <property name="Item4" isnull="true" iskey="true">
+      <property name="TabText" />
+      <property name="Header" />
+      <property name="Footer" />
+      <property name="XtraActiveChildID">-1</property>
+      <property name="Tabbed">false</property>
+      <property name="DockedAsTabbedDocument">false</property>
+      <property name="TabsPosition">Bottom</property>
+      <property name="TabsScroll">false</property>
+      <property name="ImageIndex">-1</property>
+      <property name="XtraZIndex">0</property>
+      <property name="Visibility">AutoHide</property>
+      <property name="AllowGlyphSkinning">Default</property>
+      <property name="AllowCustomHeaderButtonsGlyphSkinning">Default</property>
+      <property name="Hint" />
+      <property name="Text">拼接</property>
+      <property name="OriginalSize">@3,Width=200@3,Height=200</property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="AllowFloating">true</property>
+        <property name="AllowDockLeft">true</property>
+        <property name="AllowDockRight">true</property>
+        <property name="AllowDockTop">true</property>
+        <property name="AllowDockBottom">true</property>
+        <property name="AllowDockFill">true</property>
+        <property name="AllowDockAsTabbedDocument">true</property>
+        <property name="ShowMaximizeButton">true</property>
+        <property name="ShowAutoHideButton">true</property>
+        <property name="ShowCloseButton">false</property>
+        <property name="FloatOnDblClick">true</property>
+      </property>
+      <property name="XtraParentID">-2</property>
+      <property name="XtraSavedParentID">-1</property>
+      <property name="XtraAutoHideContainerDock">Right</property>
+      <property name="ID">ce0705cd-e3f1-48f2-a868-ce15365efbfb</property>
+      <property name="XtraID">3</property>
+      <property name="Dock">Right</property>
+      <property name="FloatLocation">@1,X=0@1,Y=0</property>
+      <property name="XtraBounds">@1,X=0@1,Y=0@3,Width=200@3,Height=526</property>
+      <property name="FloatVertical">false</property>
+      <property name="Count">0</property>
+      <property name="SavedDock">Right</property>
+      <property name="SavedIndex">1</property>
+      <property name="SavedTabbed">false</property>
+      <property name="DockVertical">Default</property>
+      <property name="SavedMdiDocument">false</property>
+      <property name="FloatSize">@3,Width=200@3,Height=200</property>
+    </property>
+    <property name="Item5" isnull="true" iskey="true">
+      <property name="TabText" />
+      <property name="Header" />
+      <property name="Footer" />
+      <property name="XtraActiveChildID">-1</property>
+      <property name="Tabbed">false</property>
+      <property name="DockedAsTabbedDocument">false</property>
+      <property name="TabsPosition">Bottom</property>
+      <property name="TabsScroll">false</property>
+      <property name="ImageIndex">-1</property>
+      <property name="XtraZIndex">2</property>
+      <property name="Visibility">Visible</property>
+      <property name="AllowGlyphSkinning">Default</property>
+      <property name="AllowCustomHeaderButtonsGlyphSkinning">Default</property>
+      <property name="Hint" />
+      <property name="Text">panelContainer1</property>
+      <property name="OriginalSize">@3,Width=209@3,Height=200</property>
+      <property name="Options" isnull="true" iskey="true">
+        <property name="AllowFloating">true</property>
+        <property name="AllowDockLeft">true</property>
+        <property name="AllowDockRight">true</property>
+        <property name="AllowDockTop">true</property>
+        <property name="AllowDockBottom">true</property>
+        <property name="AllowDockFill">true</property>
+        <property name="AllowDockAsTabbedDocument">true</property>
+        <property name="ShowMaximizeButton">true</property>
+        <property name="ShowAutoHideButton">true</property>
+        <property name="ShowCloseButton">true</property>
+        <property name="FloatOnDblClick">true</property>
+      </property>
+      <property name="XtraParentID">-1</property>
+      <property name="XtraSavedParentID">-1</property>
+      <property name="XtraAutoHideContainerDock">Float</property>
+      <property name="ID">cc1784f0-434c-4d00-8fe9-6a8efa6c7715</property>
+      <property name="XtraID">4</property>
+      <property name="Dock">Left</property>
+      <property name="FloatLocation">@1,X=0@1,Y=0</property>
+      <property name="XtraBounds">@1,X=0@3,Y=159@3,Width=209@3,Height=861</property>
+      <property name="FloatVertical">false</property>
+      <property name="Count">2</property>
+      <property name="SavedDock">Float</property>
+      <property name="SavedIndex">-1</property>
+      <property name="SavedTabbed">false</property>
+      <property name="DockVertical">Default</property>
+      <property name="SavedMdiDocument">false</property>
+      <property name="FloatSize">@3,Width=200@3,Height=200</property>
+    </property>
+  </property>
+  <property name="AutoHiddenPanelCaptionShowMode">ShowForAllPanels</property>
+  <property name="TopZIndexControls" iskey="true" value="270">
+    <property name="Item1" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item2" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item3" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item4" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item5" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item6" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item7" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item8" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item9" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item10" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item11" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item12" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item13" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item14" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item15" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item16" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item17" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item18" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item19" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item20" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item21" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item22" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item23" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item24" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item25" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item26" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item27" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item28" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item29" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item30" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item31" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item32" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item33" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item34" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item35" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item36" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item37" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item38" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item39" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item40" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item41" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item42" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item43" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item44" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item45" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item46" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item47" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item48" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item49" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item50" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item51" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item52" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item53" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item54" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item55" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item56" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item57" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item58" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item59" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item60" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item61" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item62" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item63" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item64" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item65" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item66" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item67" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item68" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item69" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item70" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item71" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item72" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item73" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item74" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item75" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item76" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item77" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item78" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item79" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item80" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item81" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item82" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item83" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item84" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item85" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item86" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item87" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item88" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item89" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item90" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item91" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item92" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item93" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item94" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item95" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item96" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item97" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item98" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item99" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item100" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item101" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item102" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item103" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item104" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item105" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item106" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item107" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item108" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item109" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item110" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item111" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item112" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item113" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item114" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item115" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item116" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item117" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item118" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item119" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item120" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item121" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item122" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item123" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item124" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item125" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item126" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item127" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item128" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item129" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item130" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item131" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item132" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item133" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item134" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item135" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item136" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item137" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item138" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item139" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item140" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item141" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item142" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item143" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item144" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item145" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item146" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item147" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item148" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item149" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item150" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item151" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item152" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item153" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item154" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item155" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item156" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item157" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item158" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item159" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item160" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item161" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item162" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item163" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item164" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item165" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item166" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item167" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item168" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item169" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item170" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item171" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item172" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item173" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item174" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item175" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item176" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item177" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item178" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item179" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item180" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item181" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item182" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item183" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item184" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item185" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item186" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item187" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item188" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item189" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item190" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item191" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item192" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item193" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item194" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item195" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item196" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item197" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item198" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item199" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item200" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item201" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item202" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item203" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item204" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item205" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item206" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item207" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item208" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item209" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item210" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item211" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item212" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item213" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item214" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item215" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item216" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item217" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item218" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item219" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item220" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item221" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item222" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item223" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item224" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item225" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item226" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item227" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item228" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item229" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item230" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item231" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item232" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item233" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item234" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item235" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item236" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item237" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item238" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item239" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item240" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item241" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item242" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item243" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item244" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item245" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item246" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item247" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item248" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item249" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item250" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item251" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item252" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item253" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item254" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item255" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item256" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item257" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item258" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item259" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item260" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item261" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+    <property name="Item262" type="System.String">DevExpress.XtraBars.BarDockControl</property>
+    <property name="Item263" type="System.String">DevExpress.XtraBars.StandaloneBarDockControl</property>
+    <property name="Item264" type="System.String">System.Windows.Forms.StatusBar</property>
+    <property name="Item265" type="System.String">System.Windows.Forms.MenuStrip</property>
+    <property name="Item266" type="System.String">System.Windows.Forms.StatusStrip</property>
+    <property name="Item267" type="System.String">DevExpress.XtraBars.Ribbon.RibbonStatusBar</property>
+    <property name="Item268" type="System.String">DevExpress.XtraBars.Ribbon.RibbonControl</property>
+    <property name="Item269" type="System.String">DevExpress.XtraBars.Navigation.OfficeNavigationBar</property>
+    <property name="Item270" type="System.String">DevExpress.XtraBars.Navigation.TileNavPane</property>
+  </property>
+  <property name="ActivePanelID">-1</property>
+  <property name="DockingOptions" isnull="true" iskey="true">
+    <property name="AutoHidePanelVerticalTextOrientation">Default</property>
+    <property name="CursorFloatCanceled" isnull="true" />
+    <property name="HideImmediatelyOnAutoHide">true</property>
+    <property name="CloseActiveTabOnly">true</property>
+    <property name="CloseActiveFloatTabOnly">false</property>
+    <property name="ShowCaptionOnMouseHover">false</property>
+    <property name="ShowCaptionImage">false</property>
+    <property name="DockPanelInTabContainerTabRegion">DockImmediately</property>
+    <property name="DockPanelInCaptionRegion">Default</property>
+    <property name="ShowMaximizeButton">true</property>
+    <property name="ShowAutoHideButton">true</property>
+    <property name="ShowCloseButton">true</property>
+    <property name="FloatOnDblClick">true</property>
+  </property>
+  <property name="AutoHideContainers" iskey="true" value="1">
+    <property name="Item1" isnull="true" iskey="true">
+      <property name="Dock">Right</property>
+      <property name="XtraZIndex">3</property>
+    </property>
+  </property>
+</XtraSerializer>
