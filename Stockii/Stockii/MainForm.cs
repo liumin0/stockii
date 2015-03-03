@@ -12,50 +12,92 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraTab;
 using DevExpress.XtraGrid.Columns;
+using System.Collections;
+using System.Xml.Serialization;
 
 namespace Stockii
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private string curSearchName = "";
+        private string curGroupName = "";
         private List<string> curStockIds = new List<string>();
         private string curApiName = "";
-        private string dockLayoutPath = "dockLayout.xml";
+        
         private Dictionary<string, string> curPages = new Dictionary<string, string>();
         private Dictionary<string, string> totalPages = new Dictionary<string, string>();
+        
 
         public MainForm()
         {
             InitializeComponent();
+            if (!Commons.InitCommons())
+                System.Environment.Exit(1);
+            
             InitSearch();
+            InitGroupInfo();
+            InitGroupMenu();
+            InitAreaMenu();
+            InitIndustryMenu();
             customXtraGrid1.gridControl1.DataSource = Commons.dataSet;
-            if (File.Exists(dockLayoutPath))
+
+            //创建配置文件目录
+            if (!Directory.Exists(Constants.configDir))
             {
-                dockManager1.RestoreLayoutFromXml(dockLayoutPath);
+                Directory.CreateDirectory(Constants.configDir);
+            }
+            if (File.Exists(Constants.dockLayoutPath))
+            {
+                dockManager1.RestoreLayoutFromXml(Constants.dockLayoutPath);
             }
             calTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            
+        }
 
+        private void InitIndustryMenu()
+        {
+            foreach (string name in Commons.industryDict.Keys)
+            {
+                AddToMenu(industryMenu, name);
+            }
+        }
 
-            //DataTable dt = new DataTable("hello");
-            //int colN = 5;
-            //int rowN = 10000;
-            //for (int i = 0; i < colN; i++)
-            //{
-            //    dt.Columns.Add(string.Format("colxxxxxxxxxxxxxxxxxxxxxumn{0}", i), 3.GetType());
-            //}
-            //for (int i = 0; i < rowN; i++)
-            //{
-            //    DataRow dr = dt.NewRow();
-            //    for (int j = 0; j < colN; j++)
-            //    {
-            //        dr[string.Format("colxxxxxxxxxxxxxxxxxxxxxumn{0}", j)] = i + j;
-            //    }
-            //    dt.Rows.Add(dr);
-            //}
-            ////System.Threading.Thread.Sleep(3000);
+        private void InitAreaMenu()
+        {
+            foreach (string name in Commons.areaDict.Keys)
+            {
+                AddToMenu(areaMenu, name);
+            }
+        }
 
-            ////gridView1.DataSource = dt;
-            //customXtraGrid1.gridControl1.DataSource = dt;
+        private void InitGroupMenu()
+        {
+            if (File.Exists(Constants.groupConfigPath))
+            {
+                using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
+                    Commons.groupDict = (SerializableDictionary<string, List<string>>)xmlFormatter.Deserialize(fileStream);
+                }
+                foreach (string groupName in Commons.groupDict.Keys)
+                {
+                    AddToMenu(groupMenu, groupName);
+                }
+                if (groupMenu.ItemLinks.Count > 0)
+                {
+                    groupMenu.ItemLinks[0].Item.PerformClick();
+                }
+            }
+        }
+
+        private void InitGroupInfo()
+        {
+            if (curGroupName.Trim().Length != 0)
+            {
+                groupInfoPanel.Text = curGroupName;
+            }
+            groupListBox.Items.Clear();
+            groupListBox.Items.AddRange(curStockIds.ToArray());
         }
 
         private void InitSearch()
@@ -64,16 +106,23 @@ namespace Stockii
             {
                 curPages[page.Name] = "1";
                 totalPages[page.Name] = "1";
+                Commons.dataSet.Tables.Add(new DataTable(page.Name));
             }
-            curSearchName = nDayCalTab.Name;
-            {   // 初始化NDay 的Tab
+            curSearchName = calTabControl.SelectedTabPage.Name;
+            BindData(Commons.dataSet.Tables[curSearchName]);
+            {   // 初始化NDay的Tab
                 nDayIndexCombo.Properties.Items.AddRange(Constants.nDayIndexDict.Keys);
                 nDayIndexCombo.SelectedIndex = 0;
                 nDayTypeCombo.Properties.Items.AddRange(Constants.nDayTypeDict.Keys);
                 nDayTypeCombo.SelectedIndex = 0;
                 nDaySumRadio.SelectedIndex = 0;
             }
-            
+            {   // 初始化自定义计算的Tab
+                calTypeCombo.Properties.Items.AddRange(Constants.customCalTypeDict.Keys);
+                calTypeCombo.SelectedIndex = 0;
+                calIndexCombo.Properties.Items.AddRange(Constants.customCalIndexDict.Keys);
+                calIndexCombo.SelectedIndex = 0;
+            }
         }
 
         private void ShowWaitForm()
@@ -117,20 +166,27 @@ namespace Stockii
             int totalPage;
             DataSet ds;
             JSONHandler.CallApi(args, out totalPage, out ds);
-            ds.Tables[0].TableName = curSearchName;
+            DataTable dt = ds.Tables[0].Copy();
+            dt.TableName = curSearchName;
             if (Commons.dataSet.Tables.Contains(curSearchName))
             {
                 Commons.dataSet.Tables.Remove(curSearchName);
             }
-            Commons.dataSet.Tables.Add(ds.Tables[0].Copy());
-            
+            Commons.dataSet.Tables.Add(dt);
             totalPages[curSearchName] = totalPage.ToString();
-            customXtraGrid1.gridControl1.DataMember = curSearchName;
-            RenameColumnHeader();
+            BindData(dt);
+            
 
             pageLabel.Text = curPages[curSearchName] + "/" + totalPages[curSearchName];
             CloseWaitForm();
             
+        }
+
+        private void BindData(DataTable dt)
+        {
+            customXtraGrid1.gridView1.Columns.Clear();
+            customXtraGrid1.gridControl1.DataSource = dt;
+            RenameColumnHeader();
         }
 
         private void RenameColumnHeader()
@@ -147,6 +203,7 @@ namespace Stockii
         private Dictionary<string, string> getSearchArgs(string searchName)
         {
             Dictionary<string, string> args = new Dictionary<string, string>();
+            #region 判断时间是否有效
             /*
             if (startDateEdit.DateTime > endDateEdit.DateTime)
             {
@@ -166,14 +223,13 @@ namespace Stockii
                 return null;
             }
             //*/
+            #endregion
             string startDate = startDateEdit.DateTime.ToString("yyyy-MM-dd");
             string endDate = endDateEdit.DateTime.ToString("yyyy-MM-dd");
             if (curStockIds.Count != 0)
             {
                 args["stockid"] = string.Join(",", curStockIds.ToArray());
             }          
-            args["starttime"] = startDate;
-            args["endtime"] = endDate;
             
             switch (searchName)
             {
@@ -197,11 +253,35 @@ namespace Stockii
                     args["sumname"] = Constants.nDayIndexDict[nDayIndexCombo.Text];
                     args["sumtype"] = Constants.nDayTypeDict[nDayTypeCombo.Text];
                     break;
+                case "customCalTab":
+                    string opt = Constants.customCalTypeDict[calTypeCombo.Text];
+                    string optName = Constants.customCalIndexDict[calIndexCombo.Text];
+                    switch (opt)
+	                {
+                        case "seperate":
+                            curApiName = "listgrowthampdis";
+                            break;
+                        case "sum":
+                            curApiName = "listndayssum";
+                            args["sumname"] = optName;
+                            break;
+		                default:
+                            curApiName = "liststockdaysdiff";
+                            args["optname"] = optName;
+                            args["opt"] = opt;
+                            break;
+	                }
+                    args["pagesize"] = "10000";
+                    
+                    break;
                 default:
                     break;
             }
-            args["page"] = "1";
+            
             args["command"] = curApiName;
+            args["starttime"] = startDate;
+            args["endtime"] = endDate;
+            args["page"] = "1";
             args["response"] = "json";
             return args;
         }
@@ -233,7 +313,7 @@ namespace Stockii
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            dockManager1.SaveLayoutToXml(dockLayoutPath);
+            dockManager1.SaveLayoutToXml(Constants.dockLayoutPath);
         }
 
         private void tradeDatesEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -284,7 +364,7 @@ namespace Stockii
             #region 导出
             using (SaveFileDialog saveDialog = new SaveFileDialog())
             {
-                saveDialog.Filter = "Excel (2010) (.xlsx)|*.xlsx |Csv File (.csv)|*.csv |RichText File (.rtf)|*.rtf |Pdf File (.pdf)|*.pdf |Html File (.html)|*.html";
+                saveDialog.Filter = "Excel (2010)|*.xlsx|Csv File|*.csv|RichText File|*.rtf|Pdf File|*.pdf|Html File|*.html";
                 if (saveDialog.ShowDialog() != DialogResult.Cancel)
                 {
                     string exportFilePath = saveDialog.FileName;
@@ -321,13 +401,73 @@ namespace Stockii
         private void calTabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             curSearchName = e.Page.Name;
-            customXtraGrid1.gridControl1.DataMember = curSearchName;
+            BindData(Commons.dataSet.Tables[curSearchName]);
             pageLabel.Text = curPages[curSearchName] + "/" + totalPages[curSearchName];
         }
 
         private void newGroupItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            List<string> stockIds;
+            string groupName = GroupDialog.GetSelectStock(out stockIds);
+            if (groupName != null)
+            {
+                curGroupName = "自选:" + groupName;
+                curStockIds = stockIds;
+                AddToMenu(groupMenu, groupName);
+            }
+        }
 
+        private void AddToMenu(PopupMenu menu, string groupName)
+        {
+            if (groupName.Length == 0)
+            {
+                return;
+            }
+            BarCheckItem item = new BarCheckItem();
+                
+            item.ItemClick += new ItemClickEventHandler(this.menuItem_ItemClick);
+            item.Caption = groupName;
+            item.Tag = menu.Name;
+            menu.AddItem(item);
+            Commons.menuItems.Add(item);
+            if (menu.Name == "groupMenu")
+            {
+                Commons.SaveGroup();
+            }
+        }
+
+        private void menuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            BarCheckItem item;
+            foreach (BarCheckItem menuItem in Commons.menuItems)
+            {
+                menuItem.Checked = false;
+            }
+            item = e.Item as BarCheckItem;
+            item.Checked = true;
+            switch (item.Tag as string)
+            {
+                case "groupMenu":
+                    curGroupName = "自选: " + item.Caption;
+                    curStockIds = Commons.groupDict[item.Caption];
+                    break;
+                case "areaMenu":
+                    curGroupName = "地区: " + item.Caption;
+                    curStockIds = Commons.areaDict[item.Caption];
+                    break;
+                case "industryMenu":
+                    curGroupName = "行业: " + item.Caption;
+                    curStockIds = Commons.industryDict[item.Caption];
+                    break;
+                default:
+                    break;
+            }
+            InitGroupInfo();
+        }
+
+        private void editGroupItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GroupDialog.EditStock();
         }
     }
 }

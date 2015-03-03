@@ -52,7 +52,13 @@ namespace Stockii
                         {
                             if (!dt.Columns.Contains(sss.Key))
                             {
-                                dt.Columns.Add(sss.Key.ToString());
+                                Type type = System.Type.GetType("System.String");
+                                decimal tmp = 0;
+                                if (!sss.Key.ToString().Equals("stockid") && decimal.TryParse(sss.Value.ToString(), out tmp))
+                                {
+                                    type = System.Type.GetType("System.Decimal");
+                                }
+                                dt.Columns.Add(sss.Key.ToString(), type);
                                 dr[sss.Key] = sss.Value;
                             }
                             else
@@ -919,7 +925,7 @@ namespace Stockii
         public static bool CallApi(String api, Dictionary<string, string> args, out int totalpage, out DataSet ds)
         {
             args["command"] = api;
-            args["json"] = api;
+            args["response"] = "json";
             return CallApi(args, out totalpage, out ds);
         }
         public static bool CallApi(Dictionary<string, string> args, out int totalpage, out DataSet ds)

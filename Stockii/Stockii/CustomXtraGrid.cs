@@ -145,22 +145,5 @@ namespace Stockii
                 }
             }
         }
-
-        private void gridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
-        {
-
-            switch (e.Column.FieldName)
-            {
-                case "created":
-                    e.DisplayText = string.Format("{0:d} ff", e.Value);
-                    break;
-                case "threesum":
-                    e.DisplayText = string.Format("{0:f2} ff", e.Value);
-                    break;
-                default:
-                    break;
-            }
-            
-        }
     }
 }

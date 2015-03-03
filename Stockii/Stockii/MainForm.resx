@@ -127,6 +127,9 @@
         pDqCZA0wC3AlwpHjAFJ9iks92VEw6oBhEwIAeeWOhH3O1TwAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="groupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
   <data name="myGroupItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -155,19 +158,9 @@
         0J5nWQNi2c0ivAMLZkuShkzcKAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="delGroupItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAKXRFWHRUaXRsZQBSZW1vdmU7
-        RGVsZXRlO0JhcnM7UmliYm9uO1N0YW5kYXJkO2NWSDAAAAFfSURBVFhH7ZZNDgFBEIWHCxCuZGOBhCM4
-        qgghrF3FalRNppPWqqrr9YyMhUVFhO731W9XVdd1NaQNKs6O/ybAY7+oulicUrpnbKVYjEArPqHPA9kS
-        hQmCdG5FdiSbahAaAItfyGqyJwrBYq04n+U7rhrEBwCHrKXmg8FQCPY8iIc7OBKjNBJaBHbCBV4ISZzP
-        bqQ0WDWwLYCAxNU2jIoOgYDFPQBcTB6IInEvQA6iWBwBsCDSalcLDi1CaRpK6UjbVax2dBBZo1iDaDzn
-        AkZeV6sNNQgp528T85sAmvjbxPwWgFbtUhEuvRDeFKitZs0JD4QHwBIPdaIOqxxEDsAj3gnCAtDE18aC
-        AkdCAygRL4qEtJCMyMNTtIyEHrc8T2eGFIkzspDM6M+3aCVDxBunku640/c5+hYwBFND4vEobiH4DlHc
-        8xryfgiv6J3X8lzv9vk79HL1KRzu+gMMHoEX2ecNY79FWc0AAAAASUVORK5CYII=
-</value>
-  </data>
+  <metadata name="areaMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 56</value>
+  </metadata>
   <data name="areaGroupItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -179,6 +172,9 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="industryMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 56</value>
+  </metadata>
   <data name="industryGroupItem.Glyph" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -276,6 +272,15 @@
         QmCC
 </value>
   </data>
+  <metadata name="groupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="areaMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 56</value>
+  </metadata>
+  <metadata name="industryMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 56</value>
+  </metadata>
   <metadata name="dockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>393, 17</value>
   </metadata>

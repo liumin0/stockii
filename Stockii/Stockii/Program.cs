@@ -20,7 +20,6 @@ namespace Stockii
             //DevExpress.XtraEditors.WindowsFormsSettings.EnableFormSkins();
             //DevExpress.XtraEditors.WindowsFormsSettings.DefaultLookAndFeel.SetSkinStyle("Office 2013 Light Gray");
             //Application.Run(new MainForm());
-
             DataDirectoryHelper.LocalPrefix = "Stockii";
             DevExpress.XtraEditors.WindowsFormsSettings.SetDPIAware();
             DevExpress.XtraEditors.WindowsFormsSettings.EnableFormSkins();

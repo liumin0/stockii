@@ -54,7 +54,7 @@
             // pictureEdit2
             // 
             this.pictureEdit2.EditValue = global::Stockii.Properties.Resources.lauching;
-            this.pictureEdit2.Location = new System.Drawing.Point(-5, -2);
+            this.pictureEdit2.Location = new System.Drawing.Point(-5, -3);
             this.pictureEdit2.Name = "pictureEdit2";
             this.pictureEdit2.Properties.AllowFocused = false;
             this.pictureEdit2.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -63,7 +63,7 @@
             this.pictureEdit2.Properties.ShowMenu = false;
             this.pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.pictureEdit2.Properties.ZoomPercent = 95D;
-            this.pictureEdit2.Size = new System.Drawing.Size(482, 249);
+            this.pictureEdit2.Size = new System.Drawing.Size(484, 249);
             this.pictureEdit2.TabIndex = 9;
             // 
             // SplashScreen1

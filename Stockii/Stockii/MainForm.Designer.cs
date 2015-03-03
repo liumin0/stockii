@@ -35,10 +35,12 @@
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.newGroupItem = new DevExpress.XtraBars.BarButtonItem();
             this.myGroupItem = new DevExpress.XtraBars.BarButtonItem();
+            this.groupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.editGroupItem = new DevExpress.XtraBars.BarButtonItem();
-            this.delGroupItem = new DevExpress.XtraBars.BarButtonItem();
             this.areaGroupItem = new DevExpress.XtraBars.BarButtonItem();
+            this.areaMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.industryGroupItem = new DevExpress.XtraBars.BarButtonItem();
+            this.industryMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.printItem = new DevExpress.XtraBars.BarButtonItem();
             this.dumpItem = new DevExpress.XtraBars.BarButtonItem();
             this.upBoardItem = new DevExpress.XtraBars.BarButtonItem();
@@ -97,7 +99,17 @@
             this.dockPanel7_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.calTypeCombo = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.calIndexCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.combinePanel.SuspendLayout();
@@ -113,6 +125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nDayTypeCombo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDaySumRadio.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDayIndexCombo.Properties)).BeginInit();
+            this.customCalTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.endDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startDateEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -127,6 +140,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).BeginInit();
             this.dockPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.calTypeCombo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calIndexCombo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -137,7 +152,6 @@
             this.newGroupItem,
             this.myGroupItem,
             this.editGroupItem,
-            this.delGroupItem,
             this.areaGroupItem,
             this.industryGroupItem,
             this.printItem,
@@ -145,13 +159,15 @@
             this.upBoardItem,
             this.downBoardItem,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.skinRibbonGalleryBarItem1});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 17;
+            this.ribbon.MaxItemId = 18;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonPage2});
+            this.ribbonPage2,
+            this.ribbonPage3});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbon.Size = new System.Drawing.Size(1047, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
@@ -168,46 +184,67 @@
             // 
             // myGroupItem
             // 
+            this.myGroupItem.ActAsDropDown = true;
+            this.myGroupItem.AllowDrawArrow = true;
+            this.myGroupItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.myGroupItem.Caption = "我的分组";
+            this.myGroupItem.DropDownControl = this.groupMenu;
             this.myGroupItem.Glyph = ((System.Drawing.Image)(resources.GetObject("myGroupItem.Glyph")));
             this.myGroupItem.Id = 2;
             this.myGroupItem.Name = "myGroupItem";
             this.myGroupItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // groupMenu
+            // 
+            this.groupMenu.Name = "groupMenu";
+            this.groupMenu.Ribbon = this.ribbon;
+            // 
             // editGroupItem
             // 
             this.editGroupItem.Caption = "编辑分组";
-            this.editGroupItem.Enabled = false;
             this.editGroupItem.Glyph = ((System.Drawing.Image)(resources.GetObject("editGroupItem.Glyph")));
             this.editGroupItem.Id = 5;
             this.editGroupItem.Name = "editGroupItem";
-            // 
-            // delGroupItem
-            // 
-            this.delGroupItem.Caption = "删除分组";
-            this.delGroupItem.Enabled = false;
-            this.delGroupItem.Glyph = ((System.Drawing.Image)(resources.GetObject("delGroupItem.Glyph")));
-            this.delGroupItem.Id = 6;
-            this.delGroupItem.Name = "delGroupItem";
+            this.editGroupItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.editGroupItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.editGroupItem_ItemClick);
             // 
             // areaGroupItem
             // 
+            this.areaGroupItem.ActAsDropDown = true;
+            this.areaGroupItem.AllowDrawArrow = true;
+            this.areaGroupItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.areaGroupItem.Caption = "按地区";
+            this.areaGroupItem.DropDownControl = this.areaMenu;
             this.areaGroupItem.Glyph = ((System.Drawing.Image)(resources.GetObject("areaGroupItem.Glyph")));
             this.areaGroupItem.Id = 7;
             this.areaGroupItem.Name = "areaGroupItem";
             this.areaGroupItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // areaMenu
+            // 
+            this.areaMenu.Name = "areaMenu";
+            this.areaMenu.Ribbon = this.ribbon;
+            // 
             // industryGroupItem
             // 
+            this.industryGroupItem.ActAsDropDown = true;
+            this.industryGroupItem.AllowDrawArrow = true;
+            this.industryGroupItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.industryGroupItem.Caption = "按行业";
+            this.industryGroupItem.DropDownControl = this.industryMenu;
             this.industryGroupItem.Glyph = ((System.Drawing.Image)(resources.GetObject("industryGroupItem.Glyph")));
             this.industryGroupItem.Id = 8;
             this.industryGroupItem.Name = "industryGroupItem";
             this.industryGroupItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            // 
+            // industryMenu
+            // 
+            this.industryMenu.Name = "industryMenu";
+            this.industryMenu.Ribbon = this.ribbon;
             // 
             // printItem
             // 
@@ -282,7 +319,6 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.newGroupItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.myGroupItem);
             this.ribbonPageGroup1.ItemLinks.Add(this.editGroupItem);
-            this.ribbonPageGroup1.ItemLinks.Add(this.delGroupItem);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "自定义分组";
             // 
@@ -387,6 +423,7 @@
             this.dockPanel3.FloatLocation = new System.Drawing.Point(756, 552);
             this.dockPanel3.ID = new System.Guid("140df4ca-15f2-4eb8-a71a-ab8c940f6af4");
             this.dockPanel3.Name = "dockPanel3";
+            this.dockPanel3.Options.ShowCloseButton = false;
             this.dockPanel3.OriginalSize = new System.Drawing.Size(200, 200);
             this.dockPanel3.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanel3.SavedIndex = 0;
@@ -436,10 +473,13 @@
             // pageLabel
             // 
             this.pageLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pageLabel.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.pageLabel.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.pageLabel.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.pageLabel.Location = new System.Drawing.Point(350, 496);
             this.pageLabel.LookAndFeel.SkinName = "Office 2013";
             this.pageLabel.Name = "pageLabel";
-            this.pageLabel.Size = new System.Drawing.Size(75, 14);
+            this.pageLabel.Size = new System.Drawing.Size(82, 17);
             this.pageLabel.TabIndex = 0;
             this.pageLabel.Text = "10000/10000";
             // 
@@ -463,6 +503,7 @@
             this.controlPanel.ID = new System.Guid("b13704c1-8c13-4275-b3d6-04d6edb901a1");
             this.controlPanel.Location = new System.Drawing.Point(0, 0);
             this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Options.ShowCloseButton = false;
             this.controlPanel.OriginalSize = new System.Drawing.Size(209, 243);
             this.controlPanel.Size = new System.Drawing.Size(209, 382);
             this.controlPanel.Text = "查询";
@@ -495,7 +536,7 @@
             this.calTabControl.LookAndFeel.SkinName = "Office 2013";
             this.calTabControl.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.calTabControl.Name = "calTabControl";
-            this.calTabControl.SelectedTabPage = this.nDayCalTab;
+            this.calTabControl.SelectedTabPage = this.customCalTab;
             this.calTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.True;
             this.calTabControl.Size = new System.Drawing.Size(194, 120);
             this.calTabControl.TabIndex = 5;
@@ -618,6 +659,10 @@
             this.customCalTab.Appearance.HeaderActive.Options.UseBackColor = true;
             this.customCalTab.Appearance.HeaderActive.Options.UseBorderColor = true;
             this.customCalTab.Appearance.HeaderActive.Options.UseForeColor = true;
+            this.customCalTab.Controls.Add(this.labelControl9);
+            this.customCalTab.Controls.Add(this.labelControl1);
+            this.customCalTab.Controls.Add(this.calIndexCombo);
+            this.customCalTab.Controls.Add(this.calTypeCombo);
             this.customCalTab.Name = "customCalTab";
             this.customCalTab.Size = new System.Drawing.Size(188, 91);
             this.customCalTab.Text = "自定义计算";
@@ -783,7 +828,7 @@
             this.document1.ControlName = "dockPanel3";
             this.document1.FloatLocation = new System.Drawing.Point(756, 552);
             this.document1.FloatSize = new System.Drawing.Size(200, 200);
-            this.document1.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.True;
+            this.document1.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
             this.document1.Properties.AllowFloat = DevExpress.Utils.DefaultBoolean.True;
             this.document1.Properties.AllowFloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
             // 
@@ -820,6 +865,66 @@
             this.dockPanel6_Container.Size = new System.Drawing.Size(200, 100);
             this.dockPanel6_Container.TabIndex = 0;
             // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup6});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "皮肤";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            // 
+            // skinRibbonGalleryBarItem1
+            // 
+            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.skinRibbonGalleryBarItem1.Id = 17;
+            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(8, 27);
+            this.labelControl1.LookAndFeel.SkinName = "Office 2013";
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(36, 14);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "方法：";
+            // 
+            // calTypeCombo
+            // 
+            this.calTypeCombo.EditValue = "";
+            this.calTypeCombo.Location = new System.Drawing.Point(50, 24);
+            this.calTypeCombo.Name = "calTypeCombo";
+            this.calTypeCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calTypeCombo.Properties.LookAndFeel.SkinName = "Office 2013";
+            this.calTypeCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.calTypeCombo.Size = new System.Drawing.Size(128, 20);
+            this.calTypeCombo.TabIndex = 1;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(8, 71);
+            this.labelControl9.LookAndFeel.SkinName = "Office 2013";
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(36, 14);
+            this.labelControl9.TabIndex = 0;
+            this.labelControl9.Text = "指标：";
+            // 
+            // calIndexCombo
+            // 
+            this.calIndexCombo.EditValue = "";
+            this.calIndexCombo.Location = new System.Drawing.Point(50, 68);
+            this.calIndexCombo.Name = "calIndexCombo";
+            this.calIndexCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calIndexCombo.Properties.LookAndFeel.SkinName = "Office 2013";
+            this.calIndexCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.calIndexCombo.Size = new System.Drawing.Size(128, 20);
+            this.calIndexCombo.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -846,12 +951,14 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.hideContainerRight.ResumeLayout(false);
             this.combinePanel.ResumeLayout(false);
             this.dockPanel3.ResumeLayout(false);
             this.dockPanel3_Container.ResumeLayout(false);
-            this.dockPanel3_Container.PerformLayout();
             this.panelContainer1.ResumeLayout(false);
             this.controlPanel.ResumeLayout(false);
             this.controlContainer2.ResumeLayout(false);
@@ -864,6 +971,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nDayTypeCombo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDaySumRadio.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nDayIndexCombo.Properties)).EndInit();
+            this.customCalTab.ResumeLayout(false);
+            this.customCalTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.endDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.startDateEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -878,6 +987,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.documentGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.document1)).EndInit();
             this.dockPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.calTypeCombo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calIndexCombo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -892,7 +1003,6 @@
         private DevExpress.XtraBars.BarButtonItem newGroupItem;
         private DevExpress.XtraBars.BarButtonItem myGroupItem;
         private DevExpress.XtraBars.BarButtonItem editGroupItem;
-        private DevExpress.XtraBars.BarButtonItem delGroupItem;
         private DevExpress.XtraBars.BarButtonItem areaGroupItem;
         private DevExpress.XtraBars.BarButtonItem industryGroupItem;
         private DevExpress.XtraBars.BarButtonItem printItem;
@@ -950,6 +1060,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.ComboBoxEdit nDayTypeCombo;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private DevExpress.XtraBars.PopupMenu groupMenu;
+        private DevExpress.XtraBars.PopupMenu areaMenu;
+        private DevExpress.XtraBars.PopupMenu industryMenu;
+        private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit calIndexCombo;
+        private DevExpress.XtraEditors.ComboBoxEdit calTypeCombo;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }
