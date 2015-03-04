@@ -54,14 +54,13 @@ namespace Stockii
             totalStockGrid.DataMember = Constants.classificationTableName;
         }
 
-        public static string GetSelectStock(out List<string> ids)
+        public static string NewGroup()
         {
             groupName = null;
             selectedIds = new List<string>();
             isEdit = false;
             GroupDialog groupDialog = new GroupDialog();
             groupDialog.ShowDialog();
-            ids = selectedIds;
             if (groupName != null)
             {
                 Commons.EditGroup(groupName, selectedIds);
@@ -226,6 +225,7 @@ namespace Stockii
         {
             List<string> ids = Commons.groupDict[groupNameCombo.Text];
             selectStockView.BeginDataUpdate();
+            clearButton.PerformClick();
             for (int i = 0; i < totalStockView.RowCount; i++)
             {
                 if (ids.Contains(totalStockView.GetDataRow(i)[0].ToString()))

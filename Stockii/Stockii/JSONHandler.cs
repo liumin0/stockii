@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Web.Script.Serialization;
 using System.Net;
+using System.Globalization;
 using System.Collections;//在C#中使用ArrayList必须引用Collections类
 
 namespace Stockii
@@ -50,19 +51,7 @@ namespace Stockii
                         DataRow dr = dt.NewRow();
                         foreach (KeyValuePair<string, object> sss in val)
                         {
-                            if (!dt.Columns.Contains(sss.Key))
-                            {
-                                Type type = System.Type.GetType("System.String");
-                                decimal tmp = 0;
-                                if (!sss.Key.ToString().Equals("stockid") && decimal.TryParse(sss.Value.ToString(), out tmp))
-                                {
-                                    type = System.Type.GetType("System.Decimal");
-                                }
-                                dt.Columns.Add(sss.Key.ToString(), type);
-                                dr[sss.Key] = sss.Value;
-                            }
-                            else
-                                dr[sss.Key] = sss.Value;
+                            AddToRow(dt, dr, sss);
                         }
                         dt.Rows.Add(dr);
                     }
@@ -75,6 +64,37 @@ namespace Stockii
                 Console.WriteLine(e.Message);
                 return null;
             }
+        }
+
+        public static void AddToRow(DataTable dt, DataRow dr, KeyValuePair<string, object> keyValue)
+        {
+            string key = keyValue.Key;
+            object value = keyValue.Value;
+            Type type = System.Type.GetType("System.String");
+
+            if (key.Contains("date") || key.Equals("created"))
+            {
+                String dateStr = value.ToString();
+                DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+                DateTime dateTime = DateTime.ParseExact(dateStr, "yyyy-MM-ddThh:mm:sszzz", dtfi, DateTimeStyles.None);
+                value = dateTime;
+                type = dateTime.GetType();
+            }
+
+            if (!dt.Columns.Contains(key))
+            {
+                
+                decimal tmp = 0;
+                if (!key.Equals("stockid") && decimal.TryParse(value.ToString(), out tmp))
+                {
+                    type = System.Type.GetType("System.Decimal");
+                }
+                dt.Columns.Add(key, type);
+
+                dr[key] = value;
+            }
+            else
+                dr[key] = value;
         }
 
         /// <summary>
@@ -222,393 +242,6 @@ namespace Stockii
             return result;
         }
         #endregion
-
-        
-        /// <summary>
-        /// 获取所有的交易日列表
-        /// </summary>
-        /// <returns></returns>
-        public static DataSet GetTradeDate()
-        {
-            string jsonText = "";
-
-            try
-            {
-                //FileStream aFile = new FileStream("tradedates.txt", FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                args["command"] = "listtradedate";
-                args["response"] = "json";
-                jsonText = Http.Post(url, args);
-
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return null;
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-
-            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
-            //jsDs.WriteXml("classfication.xml");
-
-            return jsDs;
-        }
-
-        /// <summary>
-        /// 获取股票所有分组信息，包括地区和行业两种
-        /// </summary>
-        /// <returns></returns>
-        public static DataSet GetClassfication()
-        {
-            string jsonText = "";
-
-            try
-            {
-                //FileStream aFile = new FileStream("classification.txt", FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-                
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                args["command"] = "liststockclassification";
-                args["response"] = "json";
-                jsonText = Http.Post(url, args);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return null;
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-            
-            DataSet jsDs = JsonToDataSet( "{"+ jsonarray +"}");
-            //jsDs.WriteXml("classfication.xml");
-
-            return jsDs;
-        }
-
-        /// <summary>
-        /// 查询股票所有基本信息，包括股票id、股票名称以及上市日期
-        /// </summary>
-        /// <returns></returns>
-        public static DataSet GetStockBasicInfo()
-        {
-            string jsonText = "";
-
-            try
-            {
-                //FileStream aFile = new FileStream("stockbasicinfo.txt", FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-                
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                args["command"] = "liststockbasicinfo";
-                args["response"] = "json";
-                jsonText = Http.Post(url, args);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return null;
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-
-            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
-
-            jsDs.Tables["stockbasicinfo"].Columns["stockid"].ColumnName = "stock_id";
-            jsDs.Tables["stockbasicinfo"].Columns["stockname"].ColumnName = "stock_name";
-            jsDs.Tables["stockbasicinfo"].TableName = "stock_basic_info";
-
-            return jsDs;
-        }
-
-        /// <summary>
-        /// 获取股票所有详细信息，包括股票每天的各种指标值
-        /// </summary>
-        /// <returns></returns>
-        public static DataSet GetStockDayInfo(ArrayList stockid, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int totalpage,out int errorNo)
-        {
-            string jsonText = "";
-            totalpage = 1;
-            errorNo = 0;
-
-            try
-            {
-                //FileStream aFile = new FileStream("stockdayinfo.txt", FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-                
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                args["command"] = "liststockdayinfo";
-                args["response"] = "json";
-                if (stockid.Count != 0)
-                {
-                    args["stockid"] = String.Join(",", stockid.ToArray());
-                }
-                
-                args["page"] = page+"";
-                args["pagesize"] = pagesize + "";
-                args["asc"] = asc + "";
-                if (!filter.Equals(""))
-                    args["filter"] = filter;
-                if (!sortname.Equals(""))
-                    args["sortname"] = sortname;
-                if (!startDate.Equals(""))
-                    args["starttime"] = startDate;
-                if (!endDate.Equals(""))
-                    args["endtime"] = endDate;
-                jsonText = Http.Post(url, args);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                errorNo = 1;
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                errorNo = 0;
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return new DataSet();
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-            string num = jo.First.First.First.First.ToString();
-            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
-            totalpage = Convert.ToInt32(num) / pagesize + 1;
-
-            return jsDs;
-        }
-
-        public static DataSet GetNDaysSum(ArrayList stockid, int type, int num, String sumname, String sumtype, String sortname, bool asc, String startDate, String endDate, int page, int pagesize, String filter, out int totalpage, out int errorNo)
-        {
-            string jsonText = "";
-            totalpage = 1;
-            errorNo = 0;
-            try
-            {
-                //string name = "";
-                //switch (type)
-                //{
-                //    case 1:
-                //        name = "stockdaysum.txt";
-                //        break;
-                //    case 2:
-                //        name = "stockweeksum.txt";
-                //        break;
-                //    default:
-                //        name = "stockmonthsum.txt";
-                //        break;
-                //}
-                //FileStream aFile = new FileStream(name, FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-                
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                switch (type)
-                {
-                    case 1:
-                        args["command"] = "listdaysum";
-                        args["days"] = num.ToString();
-                        break;
-                    case 2:
-                        args["command"] = "listweeksum";
-                        args["weeks"] = num.ToString();
-                        break;
-                    default:
-                        args["command"] = "listmonthsum";
-                        args["months"] = num.ToString();
-                        break;
-                }
-                args["response"] = "json";
-                if (stockid.Count != 0)
-                {
-                    args["stockid"] = String.Join(",", stockid.ToArray());
-                }
-                args["starttime"] = startDate;
-                args["endtime"] = endDate;
-                args["sumname"] = sumname;
-                args["sumtype"] = sumtype;
-                if (sortname.Trim().Length != 0)
-                {
-                    args["sortname"] = sortname;
-                    args["asc"] = asc.ToString();
-                }
-                if (filter.Trim().Length != 0)
-                {
-                    args["filter"] = filter;
-                }
-                args["page"] = page.ToString();
-                args["pagesize"] = pagesize.ToString();
-                jsonText = Http.Post(url, args);
-                
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                errorNo = 0;
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return new DataSet();
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-            string count = jo.First.First.First.First.ToString();
-            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
-            totalpage = Convert.ToInt32(count) / pagesize + 1;
-
-            return jsDs;
-        }
-        public static DataSet GetStockDaysDiff(ArrayList stockid, double min, double max, String optname, String opt, String startDate, String endDate, out int errorNo)
-        {
-            string jsonText = "";
-            errorNo = 0;
-            try
-            {
-                //FileStream aFile = new FileStream("stockdaysdiff.txt", FileMode.OpenOrCreate);
-                //StreamReader sr = new StreamReader(aFile, UnicodeEncoding.GetEncoding("GB2312"));
-                //jsonText = sr.ReadToEnd();
-
-                //sr.Close();
-                
-                string url = localURL;
-                Dictionary<string, string> args = new Dictionary<string, string>();
-                switch (opt)
-                {
-                    case "seperate":
-                        args["command"] = "listgrowthampdis";
-                        break;
-                    case "sum":
-                        args["command"] = "listndayssum";
-                        args["sumname"] = optname;
-                        break;
-                    default:
-                        args["command"] = "liststockdaysdiff";
-                        args["optname"] = optname;
-                        args["opt"] = opt;
-                        break;
-                }
-                args["response"] = "json";
-                args["stockid"] = String.Join(",", stockid.ToArray());
-                args["starttime"] = startDate;
-                args["endtime"] = endDate;
-                jsonText = Http.Post(url, args);
-            }
-            catch (IOException ex)
-            {
-                Console.WriteLine("An IOException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                Console.ReadLine();
-                return null;
-            }
-            catch (WebException ex)
-            {
-                Console.WriteLine("An WebException has been thrown!");
-                Console.WriteLine(ex.ToString());
-                errorNo = 0;
-                return null;
-            }
-
-            JObject jo = JObject.Parse(jsonText);
-
-            if (jo.First.First.Last == null)
-            {
-                return new DataSet();
-            }
-
-            string jsonarray = jo.First.First.Last.ToString();
-            DataSet jsDs = JsonToDataSet("{" + jsonarray + "}");
-
-            return jsDs;
-        }
 
         public static DataSet GetCrossInfo(double weight, String optName, String startDate, String endDate)
         {

@@ -14,6 +14,7 @@ namespace Stockii
         public SplashScreen1()
         {
             InitializeComponent();
+            
         }
 
         #region Overrides
@@ -27,6 +28,7 @@ namespace Stockii
 
         public enum SplashScreenCommand
         {
+            
         }
     }
 }

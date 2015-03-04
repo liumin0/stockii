@@ -78,7 +78,7 @@
             this.DoubleBuffered = true;
             this.Name = "WaitForm1";
             this.ShowOnTopMode = DevExpress.XtraWaitForm.ShowFormOnTopMode.AboveParent;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

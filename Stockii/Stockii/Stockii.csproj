@@ -33,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=12.0.0.1, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v14.2" />
     <Reference Include="DevExpress.DevAV.v14.2.Data, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.DevAV.v14.2.Reports, Version=14.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -68,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="CustomPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomPage.Designer.cs">
+      <DependentUpon>CustomPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomXtraGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +110,9 @@
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="WebService.cs" />
+    <EmbeddedResource Include="CustomPage.resx">
+      <DependentUpon>CustomPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomXtraGrid.resx">
       <DependentUpon>CustomXtraGrid.cs</DependentUpon>
     </EmbeddedResource>

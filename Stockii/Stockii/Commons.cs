@@ -151,5 +151,7 @@ namespace Stockii
             groupDict[name] = list;
             SaveGroup();
         }
+
+        
     }
 }

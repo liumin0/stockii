@@ -55,6 +55,7 @@ namespace Stockii
                 }
             }
         }
+
         //Create a menu item 
         DXMenuCheckItem CreateCheckItem(string caption, GridColumn column, FixedStyle style, Image image)
         {
@@ -114,24 +115,7 @@ namespace Stockii
                     //this.BeginInvoke(new MethodInvoker(view.LayoutChanged));
 
                     // TODO
-                    
-                    //DataTable dt = new DataTable("hello");
-                    //int colN = 5;
-                    //int rowN = 1000;
-                    //for (int i = 1; i < colN; i++)
-                    //{
-                    //    dt.Columns.Add(String.Format("gridColumn{0}", i), "".GetType());
-                    //}
-                    //for (int i = 0; i < rowN; i++)
-                    //{
-                    //    DataRow dr = dt.NewRow();
-                    //    for (int j = 1; j < colN; j++)
-                    //    {
-                    //        dr[String.Format("gridColumn{0}", j)] = (j).ToString();
-                    //    }
-                    //    dt.Rows.Add(dr);
-                    //}
-                    //gridControl1.DataSource = dt;
+
                     
                     if (hitInfo.Column.SortOrder == ColumnSortOrder.Ascending)
                     {

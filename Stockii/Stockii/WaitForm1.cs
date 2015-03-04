@@ -11,10 +11,13 @@ namespace Stockii
 {
     public partial class WaitForm1 : WaitForm
     {
+        private static WaitForm1 waitForm = new WaitForm1();
+
         public WaitForm1()
         {
             InitializeComponent();
             this.progressPanel1.AutoHeight = true;
+            
         }
 
         #region Overrides
@@ -39,5 +42,6 @@ namespace Stockii
         public enum WaitFormCommand
         {
         }
+
     }
 }
