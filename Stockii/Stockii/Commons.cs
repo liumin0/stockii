@@ -15,7 +15,7 @@ namespace Stockii
     public class Commons
     {
         public static List<DateTime> tradeDates = new List<DateTime>();
-        public static DataSet dataSet = new DataSet();
+        public static DataTable classificationTable = new DataTable();
         public static SerializableDictionary<String, List<string>> groupDict = new SerializableDictionary<string, List<string>>();
         public static Dictionary<String, List<string>> areaDict = new Dictionary<string, List<string>>();
         public static Dictionary<String, List<string>> industryDict = new Dictionary<string, List<string>>();
@@ -53,8 +53,7 @@ namespace Stockii
                 try
                 {
                     DataTable dt = ds.Tables[0];
-                    dt.TableName = Constants.classificationTableName;
-                    dataSet.Tables.Add(dt.Copy());
+                    classificationTable = dt.Copy();
                     foreach (DataRow row in dt.Rows)
                     {
                         string areaName = row["areaname"].ToString().Trim();

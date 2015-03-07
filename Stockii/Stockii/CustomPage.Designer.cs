@@ -129,8 +129,8 @@
             this.controlPanel.ID = new System.Guid("39f21857-3752-40e3-9e3d-9ec703cefa92");
             this.controlPanel.Location = new System.Drawing.Point(0, 0);
             this.controlPanel.Name = "controlPanel";
-            this.controlPanel.OriginalSize = new System.Drawing.Size(200, 200);
-            this.controlPanel.Size = new System.Drawing.Size(200, 337);
+            this.controlPanel.OriginalSize = new System.Drawing.Size(200, 337);
+            this.controlPanel.Size = new System.Drawing.Size(200, 257);
             this.controlPanel.Text = "查询";
             // 
             // dockPanel1_Container
@@ -147,7 +147,7 @@
             this.dockPanel1_Container.Controls.Add(this.labelControl5);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(192, 310);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(192, 230);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // calTabControl
@@ -437,10 +437,10 @@
             this.groupInfoPanel.Controls.Add(this.dockPanel2_Container);
             this.groupInfoPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.groupInfoPanel.ID = new System.Guid("b557799d-d53e-4234-b680-18a184d9e1cc");
-            this.groupInfoPanel.Location = new System.Drawing.Point(0, 337);
+            this.groupInfoPanel.Location = new System.Drawing.Point(0, 257);
             this.groupInfoPanel.Name = "groupInfoPanel";
-            this.groupInfoPanel.OriginalSize = new System.Drawing.Size(200, 337);
-            this.groupInfoPanel.Size = new System.Drawing.Size(200, 156);
+            this.groupInfoPanel.OriginalSize = new System.Drawing.Size(200, 156);
+            this.groupInfoPanel.Size = new System.Drawing.Size(200, 236);
             this.groupInfoPanel.Text = "分组详情";
             // 
             // dockPanel2_Container
@@ -448,7 +448,7 @@
             this.dockPanel2_Container.Controls.Add(this.groupListBox);
             this.dockPanel2_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(192, 129);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(192, 209);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // groupListBox
@@ -456,7 +456,7 @@
             this.groupListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupListBox.Location = new System.Drawing.Point(0, 0);
             this.groupListBox.Name = "groupListBox";
-            this.groupListBox.Size = new System.Drawing.Size(192, 129);
+            this.groupListBox.Size = new System.Drawing.Size(192, 209);
             this.groupListBox.TabIndex = 0;
             // 
             // panelControl1
@@ -532,6 +532,9 @@
             this.gridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.CustomDrawRowIndicator += new DevExpress.XtraGrid.Views.Grid.RowIndicatorCustomDrawEventHandler(this.gridView1_CustomDrawRowIndicator);
+            this.gridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView1_PopupMenuShowing);
+            this.gridView1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseUp);
             // 
             // CustomPage
             // 

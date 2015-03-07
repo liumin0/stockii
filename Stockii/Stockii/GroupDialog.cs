@@ -50,8 +50,7 @@ namespace Stockii
 
         private void InitTotalGrid()
         {
-            totalStockGrid.DataSource = Commons.dataSet;
-            totalStockGrid.DataMember = Constants.classificationTableName;
+            totalStockGrid.DataSource = Commons.classificationTable;
         }
 
         public static string NewGroup()

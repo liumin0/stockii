@@ -14,6 +14,8 @@ using DevExpress.XtraTab;
 using DevExpress.XtraGrid.Columns;
 using System.Collections;
 using System.Xml.Serialization;
+using DevExpress.XtraGrid;
+using DevExpress.Utils.Menu;
 
 namespace Stockii
 {
@@ -29,7 +31,7 @@ namespace Stockii
             InitGroupMenu();
             InitAreaMenu();
             InitIndustryMenu();
-            
+            InitUpDownMenu();
             //创建配置文件目录
             if (!Directory.Exists(Constants.configDir))
             {
@@ -39,6 +41,34 @@ namespace Stockii
             {
                 //dockManager1.RestoreLayoutFromXml(Constants.dockLayoutPath);
             }
+        }
+
+        private void InitUpDownMenu()
+        {
+            foreach (BarItemLink link in upMenu.ItemLinks)
+            {
+                BarItem item = link.Item;
+
+                if (item is BarSubItem)
+                {
+                    BarSubItem subItem = item as BarSubItem;
+                    foreach (BarItemLink subLink in subItem.ItemLinks)
+                    {
+                        subLink.Item.ItemClick += new ItemClickEventHandler(this.upDownClick);
+                    }
+                }
+                else
+                {
+                    item.ItemClick += new ItemClickEventHandler(this.upDownClick);
+                }
+            }
+        }
+
+        private void upDownClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Console.WriteLine(sender);
+            
+            Console.WriteLine(e.Item.Tag);
         }
 
         private void InitIndustryMenu()
@@ -95,22 +125,19 @@ namespace Stockii
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            XtraTabPage xpage = new XtraTabPage();
-            CustomPage page = new CustomPage(this, "nDayCalTab");
-            xpage.Text = "N日和";
-            page.Dock = DockStyle.Fill;
-            xpage.Controls.Add(page);//添加要增加的控件
-            xtraTabControl1.TabPages.Add(xpage);
-            xtraTabControl1.SelectedTabPage = xpage;//显示该页
-
             
-        }
-
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
-        {
             XtraTabPage xpage = new XtraTabPage();
-            CustomPage page = new CustomPage(this, "customCalTab");
-            xpage.Text = "自定义计算";
+            string tableName = e.Item.Tag.ToString();
+            CustomPage page = new CustomPage(this, tableName);
+            if (Constants.tableNameDict.Keys.Contains(e.Item.Tag.ToString()))
+            {
+                xpage.Text = Constants.tableNameDict[tableName];
+            }
+            else
+            {
+                xpage.Text = "未知查询";
+            }
+            
             page.Dock = DockStyle.Fill;
             xpage.Controls.Add(page);//添加要增加的控件
             xtraTabControl1.TabPages.Add(xpage);
@@ -132,41 +159,51 @@ namespace Stockii
 
         private void dumpItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //#region 导出
-            //using (SaveFileDialog saveDialog = new SaveFileDialog())
-            //{
-            //    saveDialog.Filter = "Excel (2010)|*.xlsx|Csv File|*.csv|RichText File|*.rtf|Pdf File|*.pdf|Html File|*.html";
-            //    if (saveDialog.ShowDialog() != DialogResult.Cancel)
-            //    {
-            //        string exportFilePath = saveDialog.FileName;
-            //        string fileExtenstion = new FileInfo(exportFilePath).Extension;
-            //        switch (fileExtenstion)
-            //        {
-            //            case ".xlsx":
-            //                customXtraGrid1.gridControl1.ExportToXlsx(exportFilePath);
-            //                break;
-            //            case ".csv":
-            //                customXtraGrid1.gridControl1.ExportToCsv(exportFilePath);
-            //                break;
-            //            case ".rtf":
-            //                customXtraGrid1.gridControl1.ExportToRtf(exportFilePath);
-            //                break;
-            //            case ".pdf":
-            //                customXtraGrid1.gridControl1.ExportToPdf(exportFilePath);
-            //                break;
-            //            case ".html":
-            //                customXtraGrid1.gridControl1.ExportToHtml(exportFilePath);
-            //                break;
-            //            case ".mht":
-            //                customXtraGrid1.gridControl1.ExportToMht(exportFilePath);
-            //                break;
-            //            default:
-            //                break;
-            //        }
+            
+        }
 
-            //    }
-            //}
-            //#endregion
+        public void Print(GridControl grid)
+        {
+            grid.ShowPrintPreview();
+        }
+
+        public void Export(GridControl grid)
+        {
+            #region 导出
+            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            {
+                saveDialog.Filter = "Excel (2010)|*.xlsx|Csv File|*.csv|RichText File|*.rtf|Pdf File|*.pdf|Html File|*.html";
+                if (saveDialog.ShowDialog() != DialogResult.Cancel)
+                {
+                    string exportFilePath = saveDialog.FileName;
+                    string fileExtenstion = new FileInfo(exportFilePath).Extension;
+                    switch (fileExtenstion)
+                    {
+                        case ".xlsx":
+                            grid.ExportToXlsx(exportFilePath);
+                            break;
+                        case ".csv":
+                            grid.ExportToCsv(exportFilePath);
+                            break;
+                        case ".rtf":
+                            grid.ExportToRtf(exportFilePath);
+                            break;
+                        case ".pdf":
+                            grid.ExportToPdf(exportFilePath);
+                            break;
+                        case ".html":
+                            grid.ExportToHtml(exportFilePath);
+                            break;
+                        case ".mht":
+                            grid.ExportToMht(exportFilePath);
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+            }
+            #endregion
         }
 
         private void newGroupItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -185,8 +222,8 @@ namespace Stockii
                 return;
             }
 
-            BarSubItem item = new BarSubItem();
-                
+            BarButtonItem item = new BarButtonItem();
+            
             item.ItemClick += new ItemClickEventHandler(this.menuItem_ItemClick);
             item.Caption = groupName;
             item.Tag = menu.Name;
@@ -200,8 +237,8 @@ namespace Stockii
                 DevExpress.XtraEditors.XtraMessageBox.Show("当前不存在任何查询");
                 return;
             }
-            BarSubItem item;
-            item = e.Item as BarSubItem;
+            BarButtonItem item;
+            item = e.Item as BarButtonItem;
             switch (item.Tag as string)
             {
                 case "groupMenu":
@@ -236,6 +273,8 @@ namespace Stockii
         {
             XtraTabPage page = e.Page;
             curPage = page.Controls[0] as CustomPage;
+            updownPanelGroup.Visible = curPage.WillShowUpDown();
         }
+
     }
 }

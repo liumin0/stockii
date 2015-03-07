@@ -14,13 +14,14 @@ using DevExpress.XtraGrid.Menu;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
+using DevExpress.XtraBars;
 
 namespace Stockii
 {
     public partial class CustomPage : DevExpress.XtraEditors.XtraUserControl
     {
         private MainForm parentForm;
-        private Dictionary<string, string> savedArgs;
+        private Dictionary<string, string> savedArgs = new Dictionary<string, string>();
         private List<string> curStockIds = new List<string>();
         private string curCalcTYpe = "";
         private string curApiName = "";
@@ -43,6 +44,11 @@ namespace Stockii
             InitSearch();
         }
 
+        public bool WillShowUpDown()
+        {
+            return !curCalcTYpe.Equals("nDayCalTab");
+        }
+
         public void InitPage(string groupName, List<string> stockIds)
         {
             curStockIds.Clear();
@@ -62,7 +68,20 @@ namespace Stockii
                 groupInfoPanel.Text = curGroupName;
             }
             groupListBox.Items.Clear();
-            groupListBox.Items.AddRange(curStockIds.ToArray());
+            foreach (string id in curStockIds)
+            {
+                string name;
+                try
+                {
+                    name = Commons.classificationTable.Select("stockid=" + id)[0]["stockname"].ToString();
+                }
+                catch (Exception)
+                {
+                    name = "未知名称";
+                }
+                groupListBox.Items.Add(id + " : " + name);
+            }
+            
         }
 
         private void InitSearch()
@@ -85,9 +104,36 @@ namespace Stockii
 
         private void BindData(DataTable dt)
         {
-            gridView1.Columns.Clear();
+            if (!savedArgs.Keys.Contains("command") || curApiName != savedArgs["command"])
+            {
+                gridView1.Columns.Clear();
+            }
+            
+            InsertColumns(dt);
             gridControl1.DataSource = dt;
             RenameColumnHeader();
+        }
+
+        private void InsertColumns(DataTable dt)
+        {
+            if (dt.Columns.Contains("stockid") && !dt.Columns.Contains("stockname"))
+            {
+                DataColumn c = dt.Columns.Add("stockname");
+                c.SetOrdinal(1);
+                foreach (DataRow row in dt.Rows)
+                {
+                    DataTable nameTable = Commons.classificationTable;
+                    try
+                    {
+                        row["stockname"] = nameTable.Select("stockid = " + row["stockid"])[0]["stockname"];
+                    }
+                    catch (Exception)
+                    {
+                        row["stockname"] = "未知名称";
+                    }
+                    
+                }
+            }
         }
 
         private void RenameColumnHeader()
@@ -225,14 +271,19 @@ namespace Stockii
             DataSet ds;
             if (JSONHandler.CallApi(args, out tmpTotalPage, out ds))
             {
-                savedArgs = args;
                 DataTable dt = ds.Tables[0].Copy();
                 dt.TableName = curApiName;
+                if (dt.Rows.Count == 0)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("查询结果为空");
+                    return;
+                }
                 page = 1;
                 totalPage = tmpTotalPage;
                 BindData(dt);
 
                 pageLabel.Text = page + "/" + totalPage;
+                savedArgs = args;
             }
             
             parentForm.CloseWaitForm();
@@ -303,6 +354,46 @@ namespace Stockii
                     menu.Items.Add(CreateCheckItem("Fixed Right", menu.Column, FixedStyle.Right,
                       null));
                 }
+            }
+            else if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
+            {
+                e.Menu.Items.Clear();
+                AddRightMenu(e.Menu, "导出本页", true);
+                AddRightMenu(e.Menu, "打印本页", false);
+                AddRightMenu(e.Menu, "拼接选中行", true);
+                AddRightMenu(e.Menu, "拼接本页", false);
+                AddRightMenu(e.Menu, "新建分组", true);
+            }
+        }
+
+        private void AddRightMenu(GridViewMenu menu, string name, bool beginGroup)
+        {
+            DXMenuItem item = new DXMenuItem();
+            item.BeginGroup = beginGroup;
+            item.Click += new EventHandler(this.rightKeyClick);
+            item.Caption = name;
+            menu.Items.Add(item);
+        }
+
+        private void rightKeyClick(object sender, EventArgs e)
+        {
+            DXMenuItem item = sender as DXMenuItem;
+            switch (item.Caption)
+            {
+                case "导出本页":
+                    parentForm.Export(gridControl1);
+                    break;
+                case "打印本页":
+                    parentForm.Print(gridControl1);
+                    break;
+                case "拼接选中行":
+                    break;
+                case "拼接本页":
+                    break;
+                case "新建分组":
+                    break;
+                default:
+                    break;
             }
         }
 

@@ -44,6 +44,42 @@
             this.printItem = new DevExpress.XtraBars.BarButtonItem();
             this.dumpItem = new DevExpress.XtraBars.BarButtonItem();
             this.upBoardItem = new DevExpress.XtraBars.BarButtonItem();
+            this.upMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem26 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem31 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem32 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem33 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem34 = new DevExpress.XtraBars.BarButtonItem();
             this.downBoardItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
@@ -52,7 +88,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.updownPanelGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -68,15 +104,18 @@
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.downMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.combinePanel.SuspendLayout();
             this.dockPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
@@ -95,9 +134,44 @@
             this.downBoardItem,
             this.barButtonItem1,
             this.barButtonItem2,
-            this.skinRibbonGalleryBarItem1});
+            this.skinRibbonGalleryBarItem1,
+            this.barButtonItem3,
+            this.barButtonItem4,
+            this.barSubItem1,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barSubItem2,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barSubItem3,
+            this.barButtonItem9,
+            this.barButtonItem10,
+            this.barButtonItem11,
+            this.barButtonItem12,
+            this.barButtonItem13,
+            this.barButtonItem14,
+            this.barButtonItem15,
+            this.barButtonItem16,
+            this.barButtonItem17,
+            this.barButtonItem18,
+            this.barSubItem4,
+            this.barButtonItem19,
+            this.barButtonItem20,
+            this.barButtonItem21,
+            this.barButtonItem22,
+            this.barButtonItem23,
+            this.barButtonItem25,
+            this.barButtonItem26,
+            this.barButtonItem27,
+            this.barButtonItem28,
+            this.barButtonItem29,
+            this.barButtonItem30,
+            this.barButtonItem31,
+            this.barButtonItem32,
+            this.barButtonItem33,
+            this.barButtonItem34});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 18;
+            this.ribbon.MaxItemId = 54;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -203,16 +277,309 @@
             // 
             // upBoardItem
             // 
+            this.upBoardItem.ActAsDropDown = true;
+            this.upBoardItem.AllowDrawArrow = true;
+            this.upBoardItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.upBoardItem.Caption = "按向上";
+            this.upBoardItem.DropDownControl = this.upMenu;
             this.upBoardItem.Glyph = ((System.Drawing.Image)(resources.GetObject("upBoardItem.Glyph")));
             this.upBoardItem.Id = 11;
             this.upBoardItem.Name = "upBoardItem";
             this.upBoardItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // upMenu
+            // 
+            this.upMenu.ItemLinks.Add(this.barButtonItem3);
+            this.upMenu.ItemLinks.Add(this.barButtonItem4);
+            this.upMenu.ItemLinks.Add(this.barSubItem1);
+            this.upMenu.ItemLinks.Add(this.barSubItem2);
+            this.upMenu.ItemLinks.Add(this.barSubItem3);
+            this.upMenu.ItemLinks.Add(this.barSubItem4);
+            this.upMenu.Name = "upMenu";
+            this.upMenu.Ribbon = this.ribbon;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "全部";
+            this.barButtonItem3.Id = 18;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.Tag = "CLASS_6_0";
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "开盘＝收盘＝最高＝最低";
+            this.barButtonItem4.Id = 19;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.Tag = "CLASS_0_0";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "振幅分档";
+            this.barSubItem1.Id = 20;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "振幅<2%";
+            this.barButtonItem5.Id = 21;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.Tag = "CLASS_1_0";
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "振幅=0";
+            this.barButtonItem6.Id = 22;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.Tag = "CLASS_1_1";
+            // 
+            // barSubItem2
+            // 
+            this.barSubItem2.Caption = "涨幅分档";
+            this.barSubItem2.Id = 23;
+            this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            this.barSubItem2.Name = "barSubItem2";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "卖价=0,涨幅>4.9%";
+            this.barButtonItem7.Id = 24;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.Tag = "CLASS_2_0";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "买价＝0,涨幅<-4.9%";
+            this.barButtonItem8.Id = 25;
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.Tag = "CLASS_2_1";
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "总金额分档";
+            this.barSubItem3.Id = 26;
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18)});
+            this.barSubItem3.Name = "barSubItem3";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "总金额<0.9999亿";
+            this.barButtonItem9.Id = 27;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.Tag = "CLASS_3_0";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "总金额1~1.9999亿";
+            this.barButtonItem10.Id = 28;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.Tag = "CLASS_3_1";
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "总金额2~4.9999亿";
+            this.barButtonItem11.Id = 29;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.Tag = "CLASS_3_2";
+            // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "总金额>=5亿";
+            this.barButtonItem12.Id = 30;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.Tag = "CLASS_3_3";
+            // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "总金额>9亿";
+            this.barButtonItem13.Id = 31;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.Tag = "CLASS_3_4";
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "总金额>15亿";
+            this.barButtonItem14.Id = 32;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.Tag = "CLASS_3_5";
+            // 
+            // barButtonItem15
+            // 
+            this.barButtonItem15.Caption = "总金额>20亿";
+            this.barButtonItem15.Id = 33;
+            this.barButtonItem15.Name = "barButtonItem15";
+            this.barButtonItem15.Tag = "CLASS_3_6";
+            // 
+            // barButtonItem16
+            // 
+            this.barButtonItem16.Caption = "总金额>25亿";
+            this.barButtonItem16.Id = 34;
+            this.barButtonItem16.Name = "barButtonItem16";
+            this.barButtonItem16.Tag = "CLASS_3_7";
+            // 
+            // barButtonItem17
+            // 
+            this.barButtonItem17.Caption = "总金额>30亿";
+            this.barButtonItem17.Id = 35;
+            this.barButtonItem17.Name = "barButtonItem17";
+            this.barButtonItem17.Tag = "CLASS_3_8";
+            // 
+            // barButtonItem18
+            // 
+            this.barButtonItem18.Caption = "总金额>40亿";
+            this.barButtonItem18.Id = 36;
+            this.barButtonItem18.Name = "barButtonItem18";
+            this.barButtonItem18.Tag = "CLASS_3_9";
+            // 
+            // barSubItem4
+            // 
+            this.barSubItem4.Caption = "换手率分档";
+            this.barSubItem4.Id = 37;
+            this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem19),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem25),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem26),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem27),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem28),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem29),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem30),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem31),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem32),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem33),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem34)});
+            this.barSubItem4.Name = "barSubItem4";
+            // 
+            // barButtonItem19
+            // 
+            this.barButtonItem19.Caption = "换手率<0.9999%";
+            this.barButtonItem19.Id = 38;
+            this.barButtonItem19.Name = "barButtonItem19";
+            this.barButtonItem19.Tag = "CLASS_4_0";
+            // 
+            // barButtonItem20
+            // 
+            this.barButtonItem20.Caption = "换手率1%~2.9999%";
+            this.barButtonItem20.Id = 39;
+            this.barButtonItem20.Name = "barButtonItem20";
+            this.barButtonItem20.Tag = "CLASS_4_1";
+            // 
+            // barButtonItem21
+            // 
+            this.barButtonItem21.Caption = "换手率3%~4.9999%";
+            this.barButtonItem21.Id = 40;
+            this.barButtonItem21.Name = "barButtonItem21";
+            this.barButtonItem21.Tag = "CLASS_4_2";
+            // 
+            // barButtonItem22
+            // 
+            this.barButtonItem22.Caption = "换手率5%~6.9999%";
+            this.barButtonItem22.Id = 41;
+            this.barButtonItem22.Name = "barButtonItem22";
+            this.barButtonItem22.Tag = "CLASS_4_3";
+            // 
+            // barButtonItem23
+            // 
+            this.barButtonItem23.Caption = "换手率7%~9.9999%";
+            this.barButtonItem23.Id = 42;
+            this.barButtonItem23.Name = "barButtonItem23";
+            this.barButtonItem23.Tag = "CLASS_4_4";
+            // 
+            // barButtonItem25
+            // 
+            this.barButtonItem25.Caption = "换手率>=10%";
+            this.barButtonItem25.Id = 44;
+            this.barButtonItem25.Name = "barButtonItem25";
+            this.barButtonItem25.Tag = "CLASS_4_5";
+            // 
+            // barButtonItem26
+            // 
+            this.barButtonItem26.Caption = "换手率>15%";
+            this.barButtonItem26.Id = 45;
+            this.barButtonItem26.Name = "barButtonItem26";
+            this.barButtonItem26.Tag = "CLASS_4_6";
+            // 
+            // barButtonItem27
+            // 
+            this.barButtonItem27.Caption = "换手率>20%";
+            this.barButtonItem27.Id = 46;
+            this.barButtonItem27.Name = "barButtonItem27";
+            this.barButtonItem27.Tag = "CLASS_4_7";
+            // 
+            // barButtonItem28
+            // 
+            this.barButtonItem28.Caption = "换手率>25%";
+            this.barButtonItem28.Id = 47;
+            this.barButtonItem28.Name = "barButtonItem28";
+            this.barButtonItem28.Tag = "CLASS_4_8";
+            // 
+            // barButtonItem29
+            // 
+            this.barButtonItem29.Caption = "换手率>30%";
+            this.barButtonItem29.Id = 48;
+            this.barButtonItem29.Name = "barButtonItem29";
+            this.barButtonItem29.Tag = "CLASS_4_9";
+            // 
+            // barButtonItem30
+            // 
+            this.barButtonItem30.Caption = "换手率>35%";
+            this.barButtonItem30.Id = 49;
+            this.barButtonItem30.Name = "barButtonItem30";
+            this.barButtonItem30.Tag = "CLASS_4_10";
+            // 
+            // barButtonItem31
+            // 
+            this.barButtonItem31.Caption = "换手率>40%";
+            this.barButtonItem31.Id = 50;
+            this.barButtonItem31.Name = "barButtonItem31";
+            this.barButtonItem31.Tag = "CLASS_4_11";
+            // 
+            // barButtonItem32
+            // 
+            this.barButtonItem32.Caption = "换手率>45%";
+            this.barButtonItem32.Id = 51;
+            this.barButtonItem32.Name = "barButtonItem32";
+            this.barButtonItem32.Tag = "CLASS_4_12";
+            // 
+            // barButtonItem33
+            // 
+            this.barButtonItem33.Caption = "换手率>50%";
+            this.barButtonItem33.Id = 52;
+            this.barButtonItem33.Name = "barButtonItem33";
+            this.barButtonItem33.Tag = "CLASS_4_13";
+            // 
+            // barButtonItem34
+            // 
+            this.barButtonItem34.Caption = "换手率>60%";
+            this.barButtonItem34.Id = 53;
+            this.barButtonItem34.Name = "barButtonItem34";
+            this.barButtonItem34.Tag = "CLASS_4_14";
+            // 
             // downBoardItem
             // 
+            this.downBoardItem.ActAsDropDown = true;
+            this.downBoardItem.AllowDrawArrow = true;
+            this.downBoardItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.downBoardItem.Caption = "按向下";
+            this.downBoardItem.DropDownControl = this.downMenu;
             this.downBoardItem.Glyph = ((System.Drawing.Image)(resources.GetObject("downBoardItem.Glyph")));
             this.downBoardItem.Id = 12;
             this.downBoardItem.Name = "downBoardItem";
@@ -227,6 +594,7 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.barButtonItem1.Tag = "nDayCalTab";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem2
@@ -237,7 +605,8 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.barButtonItem2.Tag = "customCalTab";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // skinRibbonGalleryBarItem1
             // 
@@ -251,7 +620,7 @@
             this.ribbonPageGroup1,
             this.ribbonPageGroup2,
             this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
+            this.updownPanelGroup});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "分组";
             // 
@@ -277,12 +646,12 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "导出";
             // 
-            // ribbonPageGroup4
+            // updownPanelGroup
             // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.upBoardItem);
-            this.ribbonPageGroup4.ItemLinks.Add(this.downBoardItem);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "版块分区";
+            this.updownPanelGroup.ItemLinks.Add(this.upBoardItem);
+            this.updownPanelGroup.ItemLinks.Add(this.downBoardItem);
+            this.updownPanelGroup.Name = "updownPanelGroup";
+            this.updownPanelGroup.Text = "版块分区";
             // 
             // ribbonPage2
             // 
@@ -410,6 +779,17 @@
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             this.xtraTabControl1.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
             // 
+            // downMenu
+            // 
+            this.downMenu.ItemLinks.Add(this.barButtonItem3);
+            this.downMenu.ItemLinks.Add(this.barButtonItem4);
+            this.downMenu.ItemLinks.Add(this.barSubItem1);
+            this.downMenu.ItemLinks.Add(this.barSubItem2);
+            this.downMenu.ItemLinks.Add(this.barSubItem3);
+            this.downMenu.ItemLinks.Add(this.barSubItem4);
+            this.downMenu.Name = "downMenu";
+            this.downMenu.Ribbon = this.ribbon;
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -439,11 +819,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.hideContainerRight.ResumeLayout(false);
             this.combinePanel.ResumeLayout(false);
             this.dockPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,7 +848,7 @@
         private DevExpress.XtraBars.BarButtonItem downBoardItem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup updownPanelGroup;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.Docking.DockPanel combinePanel;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel2_Container;
@@ -487,6 +869,43 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        private DevExpress.XtraBars.PopupMenu upMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarSubItem barSubItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem17;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem18;
+        private DevExpress.XtraBars.BarSubItem barSubItem4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem19;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem20;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem21;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem22;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem25;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem26;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem27;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem28;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem29;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem30;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem31;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem32;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem33;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem34;
+        private DevExpress.XtraBars.PopupMenu downMenu;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }

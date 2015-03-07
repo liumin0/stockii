@@ -8,10 +8,14 @@ namespace Stockii
 {
     public class Constants
     {
-        public static string classificationTableName = "classification_info";
         public static string configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
         public static string dockLayoutPath = configDir + "\\dockLayout.xml";
-        public static string groupConfigPath = configDir + "\\group.xml";
+        public static string groupConfigPath = configDir + "\\groupInfo.xml";
+
+        public static Dictionary<string, string> tableNameDict = new Dictionary<string, string>{
+                {"nDayCalTab","N日和"},
+                {"customCalTab","自定义计算"}
+        };
 
         public static Dictionary<string, string> nDayIndexDict = new Dictionary<string, string>{
                 {"均价","avg_price"},
@@ -19,12 +23,14 @@ namespace Stockii
                 {"换手","turn"},
                 {"振幅","amp"},
                 {"总金额","total"},
-                {"量比","vol"}};
+                {"量比","vol"}
+        };
 
         public static Dictionary<string, string> nDayTypeDict = new Dictionary<string, string>{
                 {"正和","positive"},
                 {"负和","negative"},
-                {"所有和","all"}};
+                {"所有和","all"}
+        };
 
         public static Dictionary<string, string> customCalTypeDict = new Dictionary<string, string>{
                 {"指定两天加","plus"},
@@ -33,7 +39,8 @@ namespace Stockii
                 {"指定时间段内最大值减最小值","maxmin"},
                 {"指定时间段内最大值比最小值","maxmindivide"},
                 {"指定时间段内的和","sum"},
-                {"两个时间内涨幅,振幅数据分段","seperate"}};
+                {"两个时间内涨幅,振幅数据分段","seperate"}
+        };
 
         public static Dictionary<string, string> customCalIndexDict = new Dictionary<string, string>{
                 {"均价","avg_price"},
@@ -46,7 +53,8 @@ namespace Stockii
                 {"换手","turnover_ratio"},
                 {"总金额","total_money"},
                 {"振幅","amplitude_ratio"},
-                {"量比","volume_ratio"}};
+                {"量比","volume_ratio"}
+        };
 
         public static Dictionary<string, string> crossIndexDict = new Dictionary<string, string>{
                 {"昨收","ytd_end_price"},
@@ -54,7 +62,8 @@ namespace Stockii
                 {"均价流通市值","avg_circulation_value"},
                 {"总市值","total_value"},
                 {"总股本","total_stock"},
-                {"流通股本","cir_of_cap_stock"}};
+                {"流通股本","cir_of_cap_stock"}
+        };
         
         public static Dictionary<string, string> translateDict = new Dictionary<string, string>{
                 {"stock_id", "代码"},
@@ -200,6 +209,7 @@ namespace Stockii
                 {"maxdate", "最大值日期"}, 
                 {"mindate", "最小值日期"}, 
                 {"maxvalue", "最大值"}, 
-                {"minvalue", "最小值"}};
+                {"minvalue", "最小值"}
+        };
     }
 }
