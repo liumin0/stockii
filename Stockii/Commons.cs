@@ -6,6 +6,8 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -20,6 +22,7 @@ namespace Stockii
         public static Dictionary<String, List<string>> areaDict = new Dictionary<string, List<string>>();
         public static Dictionary<String, List<string>> industryDict = new Dictionary<string, List<string>>();
         public static List<BarCheckItem> menuItems = new List<BarCheckItem>();
+        public static Property property = LoadProperty();
         /// <summary>
         /// 初始化所有全局变量
         /// </summary>
@@ -31,13 +34,28 @@ namespace Stockii
             //    DevExpress.XtraEditors.XtraMessageBox.Show("初始化交易日信息失败");
             //    return false;
             //}
+            Stockii.Properties.Settings s;
             if (!InitClassification())
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("初始地域行业信息失败");
                 return false;
             }
-
+            LoadGroupInfo();
             return true;
+        }
+
+        private static void LoadGroupInfo()
+        {
+            if (File.Exists(Constants.groupConfigPath))
+            {
+                using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Open))
+                {
+                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
+                    groupDict = (SerializableDictionary<string, List<string>>)xmlFormatter.Deserialize(fileStream);
+                }
+
+            }
+            groupDict["全部股票"] = new List<string>();
         }
 
         /// <summary>
@@ -151,6 +169,28 @@ namespace Stockii
             SaveGroup();
         }
 
-        
+        public static void SaveProperty()
+        {
+            IFormatter formatter = new BinaryFormatter();
+
+            Stream stream = new FileStream(Constants.propertyPath, FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, property);
+
+            stream.Close(); 
+        }
+
+        public static Property LoadProperty()
+        {
+            if (File.Exists(Constants.propertyPath))
+            {
+                using (FileStream stream = new FileStream(Constants.propertyPath, FileMode.Open, FileAccess.Read))
+                {
+                    BinaryFormatter binary = new BinaryFormatter();
+                    Property property = (Property)binary.Deserialize(stream);
+                    return property;
+                }
+            }
+            return new Property();
+        }
     }
 }

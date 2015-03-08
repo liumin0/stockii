@@ -139,12 +139,6 @@ namespace Stockii
                     return;
                 }
             }
-            
-            //for (int i = 0; i < selectStockView.DataRowCount; i++)
-            //{
-            //    DataRow row = selectStockView.GetDataRow(i);
-            //    selectedIds.Add(row[0].ToString());
-            //}
             this.Close();
         }
 

@@ -33,6 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splashScreenManager2 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Stockii.WaitForm1), true, true);
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem35 = new DevExpress.XtraBars.BarButtonItem();
             this.newGroupItem = new DevExpress.XtraBars.BarButtonItem();
             this.myGroupItem = new DevExpress.XtraBars.BarButtonItem();
             this.groupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -81,6 +84,7 @@
             this.barButtonItem33 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem34 = new DevExpress.XtraBars.BarButtonItem();
             this.downBoardItem = new DevExpress.XtraBars.BarButtonItem();
+            this.downMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
@@ -104,22 +108,23 @@
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.downMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.combinePanel.SuspendLayout();
             this.dockPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbon
             // 
+            this.ribbon.ApplicationButtonDropDownControl = this.applicationMenu1;
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -169,9 +174,11 @@
             this.barButtonItem31,
             this.barButtonItem32,
             this.barButtonItem33,
-            this.barButtonItem34});
+            this.barButtonItem34,
+            this.barButtonItem24,
+            this.barButtonItem35});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 54;
+            this.ribbon.MaxItemId = 56;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -180,6 +187,31 @@
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbon.Size = new System.Drawing.Size(1047, 147);
             this.ribbon.StatusBar = this.ribbonStatusBar;
+            // 
+            // applicationMenu1
+            // 
+            this.applicationMenu1.ItemLinks.Add(this.barButtonItem24);
+            this.applicationMenu1.ItemLinks.Add(this.barButtonItem35);
+            this.applicationMenu1.Name = "applicationMenu1";
+            this.applicationMenu1.Ribbon = this.ribbon;
+            // 
+            // barButtonItem24
+            // 
+            this.barButtonItem24.Caption = "设置";
+            this.barButtonItem24.Description = "全局属性设置";
+            this.barButtonItem24.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem24.Glyph")));
+            this.barButtonItem24.Id = 54;
+            this.barButtonItem24.Name = "barButtonItem24";
+            this.barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem24_ItemClick);
+            // 
+            // barButtonItem35
+            // 
+            this.barButtonItem35.Caption = "退出";
+            this.barButtonItem35.Description = "退出程序";
+            this.barButtonItem35.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem35.Glyph")));
+            this.barButtonItem35.Id = 55;
+            this.barButtonItem35.Name = "barButtonItem35";
+            this.barButtonItem35.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem35_ItemClick);
             // 
             // newGroupItem
             // 
@@ -586,6 +618,17 @@
             this.downBoardItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
             // 
+            // downMenu
+            // 
+            this.downMenu.ItemLinks.Add(this.barButtonItem3);
+            this.downMenu.ItemLinks.Add(this.barButtonItem4);
+            this.downMenu.ItemLinks.Add(this.barSubItem1);
+            this.downMenu.ItemLinks.Add(this.barSubItem2);
+            this.downMenu.ItemLinks.Add(this.barSubItem3);
+            this.downMenu.ItemLinks.Add(this.barSubItem4);
+            this.downMenu.Name = "downMenu";
+            this.downMenu.Ribbon = this.ribbon;
+            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "N日和";
@@ -779,17 +822,6 @@
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             this.xtraTabControl1.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
             // 
-            // downMenu
-            // 
-            this.downMenu.ItemLinks.Add(this.barButtonItem3);
-            this.downMenu.ItemLinks.Add(this.barButtonItem4);
-            this.downMenu.ItemLinks.Add(this.barSubItem1);
-            this.downMenu.ItemLinks.Add(this.barSubItem2);
-            this.downMenu.ItemLinks.Add(this.barSubItem3);
-            this.downMenu.ItemLinks.Add(this.barSubItem4);
-            this.downMenu.Name = "downMenu";
-            this.downMenu.Ribbon = this.ribbon;
-            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -816,16 +848,17 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.areaMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.industryMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.hideContainerRight.ResumeLayout(false);
             this.combinePanel.ResumeLayout(false);
             this.dockPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.downMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -906,6 +939,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem33;
         private DevExpress.XtraBars.BarButtonItem barButtonItem34;
         private DevExpress.XtraBars.PopupMenu downMenu;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem24;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem35;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }

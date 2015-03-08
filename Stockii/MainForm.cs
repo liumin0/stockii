@@ -89,18 +89,11 @@ namespace Stockii
 
         private void InitGroupMenu()
         {
-            if (File.Exists(Constants.groupConfigPath))
+            foreach (string groupName in Commons.groupDict.Keys)
             {
-                using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Open))
-                {
-                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
-                    Commons.groupDict = (SerializableDictionary<string, List<string>>)xmlFormatter.Deserialize(fileStream);
-                }
-                foreach (string groupName in Commons.groupDict.Keys)
-                {
-                    AddToMenu(groupMenu, groupName);
-                }
+                AddToMenu(groupMenu, groupName);
             }
+            
         }
 
         public void ShowWaitForm()
@@ -129,6 +122,23 @@ namespace Stockii
             XtraTabPage xpage = new XtraTabPage();
             string tableName = e.Item.Tag.ToString();
             CustomPage page = new CustomPage(this, tableName);
+            if (curPage != null)
+            {
+                if (Commons.property.KeepTime)
+                {
+                    DateTime start, end;
+                    curPage.GetTime(out start, out end);
+                    page.SetTime(start, end);
+                }
+                if (Commons.property.KeepGroup)
+                {
+                    string groupName;
+                    List<string> stockIds;
+                    curPage.GetGroup(out groupName, out stockIds);
+                    page.SetGroup(groupName, stockIds);
+                }
+            }
+            int count = 1;
             if (Constants.tableNameDict.Keys.Contains(e.Item.Tag.ToString()))
             {
                 xpage.Text = Constants.tableNameDict[tableName];
@@ -138,6 +148,25 @@ namespace Stockii
                 xpage.Text = "未知查询";
             }
             
+            while (true)
+            {
+                bool ok = true;
+                foreach (XtraTabPage pg in xtraTabControl1.TabPages)
+                {
+                    if (pg.Text.Equals(xpage.Text + count))
+                    {
+                        count++;
+                        ok = false;
+                        break;
+                    }
+                }
+                if (ok)
+                {
+                    break;
+                }
+            }
+            
+            xpage.Text += count;
             page.Dock = DockStyle.Fill;
             xpage.Controls.Add(page);//添加要增加的控件
             xtraTabControl1.TabPages.Add(xpage);
@@ -147,6 +176,11 @@ namespace Stockii
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             dockManager1.SaveLayoutToXml(Constants.dockLayoutPath);
+            DialogResult ret = DevExpress.XtraEditors.XtraMessageBox.Show("确定退出程序？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (ret != DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
         }
 
         private void printItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -248,13 +282,13 @@ namespace Stockii
             switch (item.Tag as string)
             {
                 case "groupMenu":
-                    curPage.InitPage("自选: " + item.Caption, Commons.groupDict[item.Caption]);
+                    curPage.SetGroup("自选: " + item.Caption, Commons.groupDict[item.Caption]);
                     break;
                 case "areaMenu":
-                    curPage.InitPage("地区: " + item.Caption, Commons.areaDict[item.Caption]);
+                    curPage.SetGroup("地区: " + item.Caption, Commons.areaDict[item.Caption]);
                     break;
                 case "industryMenu":
-                    curPage.InitPage("行业: " + item.Caption, Commons.industryDict[item.Caption]);
+                    curPage.SetGroup("行业: " + item.Caption, Commons.industryDict[item.Caption]);
                     break;
                 default:
                     break;
@@ -270,9 +304,12 @@ namespace Stockii
         {
             XtraTabControl tabControl = sender as XtraTabControl;
             XtraTabPage tabPage = tabControl.SelectedTabPage;
-            tabPage.Hide();
-            tabPage.Dispose();
-            
+            DialogResult ret = DevExpress.XtraEditors.XtraMessageBox.Show("确定关闭 " + tabPage.Text + "?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (ret == DialogResult.OK)
+            {
+                tabPage.Hide();
+                tabPage.Dispose();
+            }
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
@@ -280,6 +317,17 @@ namespace Stockii
             XtraTabPage page = e.Page;
             curPage = page.Controls[0] as CustomPage;
             updownPanelGroup.Visible = curPage.WillShowUpDown();
+        }
+
+        private void barButtonItem35_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            SettingDialog d = new SettingDialog();
+            d.ShowDialog();
         }
 
     }

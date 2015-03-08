@@ -42,6 +42,7 @@ namespace Stockii
             }
             curCalcTYpe = calcType;
             InitSearch();
+            InitGroupInfo();
         }
 
         public bool WillShowUpDown()
@@ -49,7 +50,18 @@ namespace Stockii
             return !curCalcTYpe.Equals("nDayCalTab");
         }
 
-        public void InitPage(string groupName, List<string> stockIds)
+        public void GetTime(out DateTime start, out DateTime end)
+        {
+            start = startDateEdit.DateTime;
+            end = endDateEdit.DateTime;
+        }
+        public void SetTime(DateTime start, DateTime end)
+        {
+            startDateEdit.DateTime = start;
+            endDateEdit.DateTime = end;
+        }
+
+        public void SetGroup(string groupName, List<string> stockIds)
         {
             curStockIds.Clear();
             foreach (string item in stockIds)
@@ -58,7 +70,12 @@ namespace Stockii
             }
             curGroupName = groupName;
             InitGroupInfo();
-            
+        }
+
+        public void GetGroup(out string groupName, out List<string> stockIds)
+        {
+            stockIds = curStockIds;
+            groupName = curGroupName;
         }
 
         private void InitGroupInfo()
@@ -68,6 +85,15 @@ namespace Stockii
                 groupInfoPanel.Text = curGroupName;
             }
             groupListBox.Items.Clear();
+            if (curStockIds.Count == 0)
+            {
+                groupInfoPanel.Text = "自选：全部股票";
+                foreach (DataRow row in Commons.classificationTable.Rows)
+                {
+                    groupListBox.Items.Add(row["stockid"] + " : " + row["stockname"]);
+                }
+                return;
+            }
             foreach (string id in curStockIds)
             {
                 string name;
@@ -143,6 +169,10 @@ namespace Stockii
                 if (Constants.translateDict.Keys.Contains(column.FieldName))
                 {
                     column.Caption = Constants.translateDict[column.FieldName];
+                }
+                if (Constants.unitDict.Keys.Contains(column.FieldName))
+                {
+                    column.Caption += "(" + Constants.unitDict[column.FieldName] + ")";
                 }
             }
         }
