@@ -15,6 +15,8 @@ using DevExpress.Utils.Menu;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using DevExpress.XtraBars;
+using DevExpress.XtraLayout;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace Stockii
 {
@@ -23,7 +25,7 @@ namespace Stockii
         private MainForm parentForm;
         private Dictionary<string, string> savedArgs = new Dictionary<string, string>();
         private List<string> curStockIds = new List<string>();
-        private string curCalcTYpe = "";
+        private string curCalcType = "";
         private string curApiName = "";
         private string curGroupName = "";
         private int page = 1;
@@ -32,22 +34,43 @@ namespace Stockii
         {
             InitializeComponent();
             parentForm = mainForm;
-            foreach (XtraTabPage page in calTabControl.TabPages)
+            bool hasTabPage = false;
+            foreach (var item in layoutControl1.HiddenItems)
+            {
+                if (item is LayoutControlGroup)
+                {
+                    LayoutControlGroup page = item as LayoutControlGroup;
+                    if (page.Name.Equals(calcType))
+                    {
+                        page.RestoreFromCustomization();
+                        page.Move(calTabControl, DevExpress.XtraLayout.Utils.InsertType.Bottom);
+                        //calTabControl.AddTabPage(page);
+                        break;
+                    }
+                }
+            }
+            foreach (LayoutControlGroup page in calTabControl.TabPages)
             {
                 if (page.Name.Equals(calcType))
                 {
                     calTabControl.SelectedTabPage = page;
+                    hasTabPage = true;
                     break;
                 }
             }
-            curCalcTYpe = calcType;
+            if (!hasTabPage)
+            {
+                calTabControl.HideToCustomization();
+            }
+            curCalcType = calcType;
             InitSearch();
             InitGroupInfo();
+            
         }
 
         public bool WillShowUpDown()
         {
-            return !curCalcTYpe.Equals("nDayCalTab");
+            return !curCalcType.Equals("nDayCalTab");
         }
 
         public void GetTime(out DateTime start, out DateTime end)
@@ -118,7 +141,7 @@ namespace Stockii
                 nDayIndexCombo.SelectedIndex = 0;
                 nDayTypeCombo.Properties.Items.AddRange(Constants.nDayTypeDict.Keys);
                 nDayTypeCombo.SelectedIndex = 0;
-                nDaySumRadio.SelectedIndex = 0;
+                nDayCategoryCombo.SelectedIndex = 0;
             }
             {   // 初始化自定义计算的Tab
                 calTypeCombo.Properties.Items.AddRange(Constants.customCalTypeDict.Keys);
@@ -126,9 +149,13 @@ namespace Stockii
                 calIndexCombo.Properties.Items.AddRange(Constants.customCalIndexDict.Keys);
                 calIndexCombo.SelectedIndex = 0;
             }
+            {   // 初始化跨区的Tab
+                crossIndexCombo.Properties.Items.AddRange(Constants.crossIndexDict.Keys);
+                crossIndexCombo.SelectedIndex = 0;
+            }
         }
 
-        private void BindData(DataTable dt)
+        private void BindData(DataTable dt, bool merge)
         {
             if (!savedArgs.Keys.Contains("command") || curApiName != savedArgs["command"])
             {
@@ -136,7 +163,16 @@ namespace Stockii
             }
             
             InsertColumns(dt);
-            gridControl1.DataSource = dt;
+            if (merge)
+            {
+                DataTable tmpDt = gridControl1.DataSource as DataTable;
+                tmpDt.Merge(dt);
+            }
+            else
+            {
+                gridControl1.DataSource = dt;
+            }
+            
             RenameColumnHeader();
         }
 
@@ -208,10 +244,11 @@ namespace Stockii
                 args["stockid"] = string.Join(",", curStockIds.ToArray());
             }
 
+            args["pagesize"] = "1000";
             switch (searchName)
             {
                 case "nDayCalTab":
-                    switch (nDaySumRadio.SelectedIndex)
+                    switch (nDayCategoryCombo.SelectedIndex)
                     {
                         case 1:
                             curApiName = "listweeksum";
@@ -226,7 +263,6 @@ namespace Stockii
                             args["days"] = nDayCountSpin.Text;
                             break;
                     }
-                    args["pagesize"] = "1000";
                     args["sumname"] = Constants.nDayIndexDict[nDayIndexCombo.Text];
                     args["sumtype"] = Constants.nDayTypeDict[nDayTypeCombo.Text];
                     break;
@@ -251,7 +287,17 @@ namespace Stockii
                     args["pagesize"] = "10000";
 
                     break;
+                case "crossTab":
+                    curApiName = "listcrossinfo";
+                    args["optname"] = Constants.crossIndexDict[crossIndexCombo.Text];
+                    args["weight"] = crossWeightEdit.Text;
+                    break;
+                case "growthBoardTab":
+                    curApiName = "listgrowthboard";
+                    args["weight"] = growthBoardWeightEdit.Text;
+                    break;
                 default:
+                    curApiName = curCalcType;
                     break;
             }
 
@@ -263,11 +309,11 @@ namespace Stockii
             return args;
         }
 
-        private void nDaySumRadio_SelectedIndexChanged(object sender, EventArgs e)
+        private void nDayCategoryCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
             int min = 1;
             int max = 1;
-            switch (nDaySumRadio.SelectedIndex)
+            switch (nDayCategoryCombo.SelectedIndex)
             {
                 case 0:
                     min = 3;
@@ -290,12 +336,16 @@ namespace Stockii
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            Dictionary<string, string> args = getSearchArgs(curCalcTYpe);
+            Dictionary<string, string> args = getSearchArgs(curCalcType);
             if (args == null)
             {
                 return;
             }
-            
+            DoSearch(args);
+        }
+
+        private void DoSearch(Dictionary<string, string> args)
+        {
             parentForm.ShowWaitForm();
             bool ret = true;
             do
@@ -312,9 +362,11 @@ namespace Stockii
                         ret = false;
                         break;
                     }
-                    page = 1;
+                    page = Convert.ToInt32(args["page"]);
+                    //int pageSize = Convert.ToInt32(args["pagesize"]);
+                    //page += (pageSize / 1000 - 1);
                     totalPage = tmpTotalPage;
-                    BindData(dt);
+                    BindData(dt, page != 1);
 
                     pageLabel.Text = page + "/" + totalPage;
                     savedArgs = args;
@@ -323,10 +375,9 @@ namespace Stockii
 
             parentForm.CloseWaitForm();
             if (!ret)
-	        {
-		        DevExpress.XtraEditors.XtraMessageBox.Show("查询结果为空");
-	        }
-            
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("查询结果为空");
+            }
         }
 
         private void tradeDatesEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -500,12 +551,24 @@ namespace Stockii
                 DevExpress.XtraGrid.Views.Grid.ViewInfo.GridHitInfo hitInfo = view.CalcHitInfo(e.Location);
                 if (hitInfo.InColumn)
                 {
-                    Console.WriteLine("clicked2: {0}", hitInfo.Column.FieldName);
-                    //((DevExpress.Utils.DXMouseEventArgs)e).Handled = true;
-                    //this.BeginInvoke(new MethodInvoker(view.LayoutChanged));
-
-                    // TODO
-
+                    if (hitInfo.Column.FieldName.Equals("stockname"))
+                    {
+                        return;
+                    }
+                    if (Constants.customSortList.Contains(curCalcType))
+                    {
+                        Dictionary<string, string> args = getSearchArgs(curCalcType);
+                        if (args == null)
+                        {
+                            return;
+                        }
+                        args["sortname"] = hitInfo.Column.FieldName;
+                        if (hitInfo.Column.SortOrder == ColumnSortOrder.Ascending)
+                            args["asc"] = "false";
+                        else
+                            args["asc"] = "true";
+                        DoSearch(args);
+                    }
 
                     if (hitInfo.Column.SortOrder == ColumnSortOrder.Ascending)
                     {
@@ -519,5 +582,74 @@ namespace Stockii
                 }
             }
         }
+
+        private void showMoreX5Button_Click(object sender, EventArgs e)
+        {
+            //ShowMore(5000);
+        }
+
+        private void showMoreButton_Click(object sender, EventArgs e)
+        {
+            ShowMore(1000);
+        }
+
+        private void ShowMore(int pagesize)
+        {
+            if (savedArgs.Count == 0)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("当前无查询");
+                return;
+            }
+            if (page >= totalPage)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("已经是尾页");
+                return;
+            }
+            Dictionary<string, string> args = getSearchArgs(curCalcType);
+            if (args == null)
+            {
+                return;
+            }
+            args["page"] = "" + (page + 1);
+            args["pagesize"] = "" + pagesize;
+            DoSearch(args);
+        }
+
+        private void gridView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = 0;
+            decimal total = 0;
+            decimal avg = 0;
+            decimal max = decimal.MinValue;
+            decimal min = decimal.MaxValue;
+            foreach (GridCell cell in gridView1.GetSelectedCells())
+            {
+                if (cell.Column.ColumnType == total.GetType())
+                {
+                    try
+                    {
+                        decimal value = Convert.ToDecimal(gridView1.GetRowCellValue(cell.RowHandle, cell.Column));
+                        total += value;
+                        max = value > max ? value : max;
+                        min = value < min ? value : min;
+                        count++;
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+            }
+            if (count == 0 )
+            {
+                parentForm.ShowTextInStatusBar("");
+                return;
+            }
+            avg = count != 0 ? total / count : 0;
+            parentForm.ShowTextInStatusBar(string.Format("个数：{0}    均值：{1:f4}    最大：{2:f4}    最小：{3:f4}    求和：{4:f4}                       ",
+                                            count, avg, max, min, total));
+        }
+
+        
     }
 }

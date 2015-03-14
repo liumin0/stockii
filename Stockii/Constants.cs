@@ -13,11 +13,12 @@ namespace Stockii
         public static string groupConfigPath = configDir + "\\groupInfo.xml";
         public static string propertyPath = configDir + "\\property.dat";
 
-        public static Dictionary<string, string> tableNameDict = new Dictionary<string, string>{
-            #region 表名字典
-                {"nDayCalTab","N日和"},
-                {"customCalTab","自定义计算"}
-            #endregion
+        public static List<string> customSortList = new List<string> {
+                "liststockdayinfo",
+                "nDayCalTab",
+                "listraisinglimitinfo",
+                "listraisinglimitinfointerval",
+                "liststockstop",
         };
 
         public static Dictionary<string, string> nDayIndexDict = new Dictionary<string, string>{
@@ -77,7 +78,22 @@ namespace Stockii
                 {"流通股本","cir_of_cap_stock"}
             #endregion
         };
-        
+
+        public class IndexInfo
+        {
+            public string fieldName;
+            public string name;
+            public string unit;
+            public string format;
+            public IndexInfo(string aField, string aName, string aUnit, string aFormat)
+            {
+                fieldName = aField;
+                name = aName;
+                unit = aUnit;
+                format = aFormat;
+            }
+        }
+
         public static Dictionary<string, string> translateDict = new Dictionary<string, string>{
             #region 翻译字典
                 {"stock_id", "代码"},
@@ -223,7 +239,46 @@ namespace Stockii
                 {"maxdate", "最大值日期"}, 
                 {"mindate", "最小值日期"}, 
                 {"maxvalue", "最大值"}, 
-                {"minvalue", "最小值"}
+                {"minvalue", "最小值"},
+                {"start_list_date", "开始-上市"},
+                {"end_list_date", "结束-上市"},
+                {"cross_type", "跨区类型"},
+                {"avg", "均值"},
+                {"difference", "差异"},
+                {"diff", "间隔天数"},
+                {"state", "状态"},
+                {"count", "总数"},
+                {"limit", "涨停总数"},
+                {"percent", "涨停比例"},
+                {"jgtime", "间隔交易日"},
+                {"jgtimemax", "最大涨停间隔"},
+                {"jgtimemin", "最小涨停间隔"},
+                {"jgtimeave", "平均涨停间隔"},
+                {"trade", "交易总天数"},
+                {"per", "涨停比例"},
+                {"growthsz","深圳主板涨幅大于2%"},
+                {"countsz","深圳主板总数"},
+                {"persz","深圳主板百分比"},
+                {"growthsme","深圳中小板涨幅大于2%"},
+                {"countsme","深圳中小板总数"},
+                {"persme","深圳中小板百分比"},
+                {"growthgem","创业板涨幅大于2%"},
+                {"countgem","创业板总数"},
+                {"pergem","创业板百分比"},
+                {"growthsh","上海主板涨幅大于2%"},
+                {"countsh","上海主板总数"},
+                {"persh","上海主板百分比"},
+                {"totalnum","四个板块总数"},
+                {"growthnum","四个板块总数量和中涨幅2%数量和"},
+                {"pertotalgrowth","四个板块总数量和中涨幅2%数量和/四个板块总数量和"},
+                {"pertotalsz","深圳主板总数量/四个板块总数量和"},
+                {"pertotalsme","深圳中小板总数量/四个板块总数量和"},
+                {"pertotalgem","创业板总数量/四个板块总数量和"},
+                {"pertotalsh","上海主板总数量/四个板块总数量和"},
+                {"pergrowthsz","深圳主板涨幅大于2%/四个板块涨幅2%数量和"},
+                {"pergrowthsme","深圳中小板涨幅大于2%/四个板块涨幅2%数量和"},
+                {"pergrwothgem","创业板涨幅大于2%/四个板块涨幅2%数量和"},
+                {"pergrowthsh","上海主板涨幅大于2%/四个板块涨幅2%数量和"},
             #endregion
         };
 

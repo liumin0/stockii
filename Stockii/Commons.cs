@@ -157,18 +157,30 @@ namespace Stockii
             }
         }
 
+        /// <summary>
+        /// 删除分组
+        /// </summary>
+        /// <param name="name">分组名称</param>
         public static void DeleteGroup(string name)
         {
             groupDict.Remove(name);
             SaveGroup();
         }
 
+        /// <summary>
+        /// 编辑分组
+        /// </summary>
+        /// <param name="name">分组名称</param>
+        /// <param name="list">新分组内容</param>
         public static void EditGroup(string name, List<string> list)
         {
             groupDict[name] = list;
             SaveGroup();
         }
 
+        /// <summary>
+        /// 保存设置信息
+        /// </summary>
         public static void SaveProperty()
         {
             IFormatter formatter = new BinaryFormatter();
@@ -179,6 +191,10 @@ namespace Stockii
             stream.Close(); 
         }
 
+        /// <summary>
+        /// 读取设置信息
+        /// </summary>
+        /// <returns></returns>
         public static Property LoadProperty()
         {
             if (File.Exists(Constants.propertyPath))

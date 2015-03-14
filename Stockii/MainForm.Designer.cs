@@ -31,6 +31,24 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Stockii.SplashScreen1), true, false);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             this.splashScreenManager2 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Stockii.WaitForm1), true, true);
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
@@ -88,6 +106,14 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.barButtonItem36 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem37 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem38 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem39 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem40 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem41 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem42 = new DevExpress.XtraBars.BarButtonItem();
+            this.autoCalResult = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -99,15 +125,20 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
-            this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.combinePanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.combineGrid = new DevExpress.XtraGrid.GridControl();
+            this.combineView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.redoButton = new DevExpress.XtraEditors.SimpleButton();
+            this.undoButton = new DevExpress.XtraEditors.SimpleButton();
             this.dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel7_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupMenu)).BeginInit();
@@ -116,10 +147,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.upMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.downMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.hideContainerRight.SuspendLayout();
             this.combinePanel.SuspendLayout();
+            this.dockPanel2_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.combineGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combineView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.dockPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
+            this.hideContainerRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -176,9 +212,17 @@
             this.barButtonItem33,
             this.barButtonItem34,
             this.barButtonItem24,
-            this.barButtonItem35});
+            this.barButtonItem35,
+            this.barButtonItem36,
+            this.barButtonItem37,
+            this.barButtonItem38,
+            this.barButtonItem39,
+            this.barButtonItem40,
+            this.barButtonItem41,
+            this.barButtonItem42,
+            this.autoCalResult});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 56;
+            this.ribbon.MaxItemId = 66;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -637,6 +681,9 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem1.Text = "查询股票的日和、周和、月和信息";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barButtonItem1.SuperTip = superToolTip1;
             this.barButtonItem1.Tag = "nDayCalTab";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -648,6 +695,9 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem2.Text = "查询股票的自定义计算结果";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barButtonItem2.SuperTip = superToolTip2;
             this.barButtonItem2.Tag = "customCalTab";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -656,6 +706,112 @@
             this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
             this.skinRibbonGalleryBarItem1.Id = 17;
             this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // barButtonItem36
+            // 
+            this.barButtonItem36.Caption = "基础数据";
+            this.barButtonItem36.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem36.Glyph")));
+            this.barButtonItem36.Id = 56;
+            this.barButtonItem36.Name = "barButtonItem36";
+            this.barButtonItem36.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem3.Text = "查询股票所有详细信息，包括股票每天的各种指标值";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            this.barButtonItem36.SuperTip = superToolTip3;
+            this.barButtonItem36.Tag = "liststockdayinfo";
+            this.barButtonItem36.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem37
+            // 
+            this.barButtonItem37.Caption = "跨区";
+            this.barButtonItem37.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem37.Glyph")));
+            this.barButtonItem37.Id = 57;
+            this.barButtonItem37.Name = "barButtonItem37";
+            this.barButtonItem37.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem4.Text = "查询股票跨区的信息";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            this.barButtonItem37.SuperTip = superToolTip4;
+            this.barButtonItem37.Tag = "crossTab";
+            this.barButtonItem37.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem38
+            // 
+            this.barButtonItem38.Caption = "基本涨停";
+            this.barButtonItem38.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem38.Glyph")));
+            this.barButtonItem38.Id = 58;
+            this.barButtonItem38.Name = "barButtonItem38";
+            this.barButtonItem38.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem5.Text = "查询股票的基本涨停信息，包括涨停时间、涨幅、昨收和现价";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            this.barButtonItem38.SuperTip = superToolTip5;
+            this.barButtonItem38.Tag = "listraisinglimitinfo";
+            this.barButtonItem38.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem39
+            // 
+            this.barButtonItem39.Caption = "每日涨停";
+            this.barButtonItem39.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem39.Glyph")));
+            this.barButtonItem39.Id = 59;
+            this.barButtonItem39.Name = "barButtonItem39";
+            this.barButtonItem39.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem6.Text = "查询每天的股票涨停情况，包括每天股票总数、涨停数和每天涨停比例";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            this.barButtonItem39.SuperTip = superToolTip6;
+            this.barButtonItem39.Tag = "listraisinglimitinfoday";
+            this.barButtonItem39.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem40
+            // 
+            this.barButtonItem40.Caption = "涨停间隔";
+            this.barButtonItem40.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem40.Glyph")));
+            this.barButtonItem40.Id = 60;
+            this.barButtonItem40.Name = "barButtonItem40";
+            this.barButtonItem40.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem7.Text = "查询股票连续两次涨停时间间隔，包括间隔时间、间隔最值和涨停百分比";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            this.barButtonItem40.SuperTip = superToolTip7;
+            this.barButtonItem40.Tag = "listraisinglimitinfointerval";
+            this.barButtonItem40.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem41
+            // 
+            this.barButtonItem41.Caption = "停牌与退市";
+            this.barButtonItem41.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem41.Glyph")));
+            this.barButtonItem41.Id = 61;
+            this.barButtonItem41.Name = "barButtonItem41";
+            this.barButtonItem41.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem8.Text = "查询股票停牌和退市信息，包括停牌退市开始和结束时间等";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            this.barButtonItem41.SuperTip = superToolTip8;
+            this.barButtonItem41.Tag = "liststockstop";
+            this.barButtonItem41.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem42
+            // 
+            this.barButtonItem42.Caption = "涨幅轮动";
+            this.barButtonItem42.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem42.Glyph")));
+            this.barButtonItem42.Id = 62;
+            this.barButtonItem42.Name = "barButtonItem42";
+            this.barButtonItem42.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
+            | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            toolTipTitleItem9.Text = "查询四个板块的涨幅轮动情况，包括深圳主板、中小板、创业板以及上海主板";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            this.barButtonItem42.SuperTip = superToolTip9;
+            this.barButtonItem42.Tag = "growthBoardTab";
+            this.barButtonItem42.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // autoCalResult
+            // 
+            this.autoCalResult.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.autoCalResult.CategoryGuid = new System.Guid("6ffddb2b-9015-4d97-a4c1-91613e0ef537");
+            this.autoCalResult.Id = 65;
+            this.autoCalResult.Name = "autoCalResult";
+            this.autoCalResult.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // ribbonPage1
             // 
@@ -695,6 +851,7 @@
             this.updownPanelGroup.ItemLinks.Add(this.downBoardItem);
             this.updownPanelGroup.Name = "updownPanelGroup";
             this.updownPanelGroup.Text = "版块分区";
+            this.updownPanelGroup.Visible = false;
             // 
             // ribbonPage2
             // 
@@ -705,8 +862,15 @@
             // 
             // ribbonPageGroup5
             // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem36);
             this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem37);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem38);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem39);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem40);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem41);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem42);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "指标计算";
             // 
@@ -724,6 +888,7 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.autoCalResult, true);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 692);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -747,36 +912,96 @@
             "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
             "DevExpress.XtraBars.Navigation.TileNavPane"});
             // 
-            // hideContainerRight
-            // 
-            this.hideContainerRight.BackColor = System.Drawing.Color.White;
-            this.hideContainerRight.Controls.Add(this.combinePanel);
-            this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.hideContainerRight.Location = new System.Drawing.Point(1027, 147);
-            this.hideContainerRight.Name = "hideContainerRight";
-            this.hideContainerRight.Size = new System.Drawing.Size(20, 545);
-            // 
             // combinePanel
             // 
             this.combinePanel.Controls.Add(this.dockPanel2_Container);
             this.combinePanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.combinePanel.ID = new System.Guid("ce0705cd-e3f1-48f2-a868-ce15365efbfb");
-            this.combinePanel.Location = new System.Drawing.Point(798, 147);
+            this.combinePanel.Location = new System.Drawing.Point(0, 0);
             this.combinePanel.Name = "combinePanel";
             this.combinePanel.Options.ShowCloseButton = false;
-            this.combinePanel.OriginalSize = new System.Drawing.Size(200, 200);
+            this.combinePanel.OriginalSize = new System.Drawing.Size(941, 200);
             this.combinePanel.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.combinePanel.SavedIndex = 1;
-            this.combinePanel.Size = new System.Drawing.Size(200, 397);
+            this.combinePanel.SavedIndex = 0;
+            this.combinePanel.Size = new System.Drawing.Size(941, 545);
             this.combinePanel.Text = "拼接";
             this.combinePanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
             // 
             // dockPanel2_Container
             // 
+            this.dockPanel2_Container.Controls.Add(this.combineGrid);
+            this.dockPanel2_Container.Controls.Add(this.panelControl1);
             this.dockPanel2_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(192, 370);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(933, 518);
             this.dockPanel2_Container.TabIndex = 0;
+            // 
+            // combineGrid
+            // 
+            this.combineGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.combineGrid.Location = new System.Drawing.Point(0, 0);
+            this.combineGrid.MainView = this.combineView;
+            this.combineGrid.MenuManager = this.ribbon;
+            this.combineGrid.Name = "combineGrid";
+            this.combineGrid.Size = new System.Drawing.Size(933, 488);
+            this.combineGrid.TabIndex = 1;
+            this.combineGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.combineView});
+            // 
+            // combineView
+            // 
+            this.combineView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.combineView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.combineView.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.combineView.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.combineView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.combineView.GridControl = this.combineGrid;
+            this.combineView.IndicatorWidth = 80;
+            this.combineView.Name = "combineView";
+            this.combineView.OptionsBehavior.Editable = false;
+            this.combineView.OptionsSelection.MultiSelect = true;
+            this.combineView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
+            this.combineView.OptionsView.BestFitMaxRowCount = 1;
+            this.combineView.OptionsView.ColumnAutoWidth = false;
+            this.combineView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
+            this.combineView.OptionsView.EnableAppearanceEvenRow = true;
+            this.combineView.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
+            this.combineView.OptionsView.ShowFooter = true;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.redoButton);
+            this.panelControl1.Controls.Add(this.undoButton);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 488);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(933, 30);
+            this.panelControl1.TabIndex = 0;
+            // 
+            // redoButton
+            // 
+            this.redoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.redoButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.redoButton.Image = ((System.Drawing.Image)(resources.GetObject("redoButton.Image")));
+            this.redoButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.redoButton.Location = new System.Drawing.Point(470, 0);
+            this.redoButton.Name = "redoButton";
+            this.redoButton.Size = new System.Drawing.Size(32, 32);
+            this.redoButton.TabIndex = 0;
+            this.redoButton.ToolTip = "重做";
+            // 
+            // undoButton
+            // 
+            this.undoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.undoButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
+            this.undoButton.Image = ((System.Drawing.Image)(resources.GetObject("undoButton.Image")));
+            this.undoButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.undoButton.Location = new System.Drawing.Point(432, 0);
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Size = new System.Drawing.Size(32, 32);
+            this.undoButton.TabIndex = 0;
+            this.undoButton.Text = "simpleButton1";
+            this.undoButton.ToolTip = "撤销";
             // 
             // dockPanel5
             // 
@@ -822,6 +1047,15 @@
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             this.xtraTabControl1.CloseButtonClick += new System.EventHandler(this.xtraTabControl1_CloseButtonClick);
             // 
+            // hideContainerRight
+            // 
+            this.hideContainerRight.BackColor = System.Drawing.Color.White;
+            this.hideContainerRight.Controls.Add(this.combinePanel);
+            this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.hideContainerRight.Location = new System.Drawing.Point(1027, 147);
+            this.hideContainerRight.Name = "hideContainerRight";
+            this.hideContainerRight.Size = new System.Drawing.Size(20, 545);
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -845,7 +1079,6 @@
             this.Ribbon = this.ribbon;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "斯多克智能股票分析系统";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
@@ -855,10 +1088,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.upMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.downMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.hideContainerRight.ResumeLayout(false);
             this.combinePanel.ResumeLayout(false);
+            this.dockPanel2_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.combineGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combineView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.dockPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
+            this.hideContainerRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -889,7 +1127,6 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel6_Container;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel5;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer1;
-        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
@@ -942,6 +1179,20 @@
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem24;
         private DevExpress.XtraBars.BarButtonItem barButtonItem35;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem36;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem37;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem38;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem39;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem40;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem41;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem42;
+        private DevExpress.XtraBars.BarStaticItem autoCalResult;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraGrid.GridControl combineGrid;
+        private DevExpress.XtraGrid.Views.Grid.GridView combineView;
+        private DevExpress.XtraEditors.SimpleButton redoButton;
+        private DevExpress.XtraEditors.SimpleButton undoButton;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
+        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
     }
 }

@@ -30,3 +30,5 @@ C:\WorkSpace\stockii\Stockii\Stockii\obj\Debug\Stockii.csproj.GenerateResource.C
 C:\WorkSpace\stockii\Stockii\Stockii\obj\Debug\Stockii.exe.licenses
 C:\WorkSpace\stockii\Stockii\Stockii\obj\Debug\Stockii.SettingDialog.resources
 C:\WorkSpace\stockii\Stockii\Stockii\bin\Debug\Stockii.exe.config
+D:\workspace\vs\Stockii\Stockii\bin\Debug\Stockii.exe.config
+D:\workspace\vs\Stockii\Stockii\obj\Debug\Stockii.SettingDialog.resources

@@ -17,19 +17,23 @@ namespace Stockii
         private static string groupName = null;
         private static List<string> selectedIds = new List<string>();
         private DataTable selectTable = new DataTable();
+        private DataTable totalTable = new DataTable();
         private static bool isEdit = false;
         public GroupDialog()
         {
             InitializeComponent();
             InitTotalGrid();
             InitSelectGrid();
+            InitAreaCombo();
+            InitIndustryCombo();
+            industryCombo.CheckAll();
+            areaCombo.CheckAll();
             deleteButton.Enabled = false;
             if (!isEdit)
             {
                 groupNameCombo.Properties.Buttons[0].Visible = false;
                 deleteGroupButton.Visible = false;
                 groupNameCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-                //groupNameCombo.Properties.
             }
             else
             {
@@ -38,6 +42,29 @@ namespace Stockii
                 groupNameCombo.Properties.Buttons[0].Visible = true;
                 deleteGroupButton.Visible = true;
                 groupNameCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            }
+        }
+
+        private void InitIndustryCombo()
+        {
+            foreach (string name in Commons.industryDict.Keys)
+            {
+                if (name.Trim().Length != 0)
+                {
+                    industryCombo.Properties.Items.Add(name);
+                }
+                
+            }
+        }
+
+        private void InitAreaCombo()
+        {
+            foreach (string name in Commons.areaDict.Keys)
+            {
+                if (name.Trim().Length != 0)
+                {
+                    areaCombo.Properties.Items.Add(name);
+                }
             }
         }
 
@@ -50,7 +77,21 @@ namespace Stockii
 
         private void InitTotalGrid()
         {
-            totalStockGrid.DataSource = Commons.classificationTable;
+            totalTable.Columns.Add("stockid");
+            totalTable.Columns.Add("stockname");
+            InitTableFromTable(totalTable,Commons.classificationTable, "");
+            totalStockGrid.DataSource = totalTable;
+        }
+
+        private void InitTableFromTable(DataTable table, DataTable fromTable, string filter)
+        {
+            foreach (DataRow row in fromTable.Select(filter))
+            {
+                DataRow dr = table.NewRow();
+                dr[0] = row["stockid"];
+                dr[1] = row["stockname"];
+                totalTable.Rows.Add(dr);
+            }
         }
 
         public static string NewGroup()
@@ -239,14 +280,39 @@ namespace Stockii
         {
             selectStockView.BeginDataUpdate();
             clearButton.PerformClick();
-            for (int i = 0; i < totalStockView.RowCount; i++)
-            {
-                if (stockIds.Contains(totalStockView.GetDataRow(i)[0].ToString()))
-                {
-                    AddRow(i);
-                }
-            }
+
+            InitTableFromTable(selectTable, Commons.classificationTable, "stockid in ('" + string.Join("','", stockIds.ToArray()) + "')");
+            selectedIds = stockIds;
             selectStockView.EndDataUpdate();
+        }
+
+        private void areaCombo_EditValueChanged(object sender, EventArgs e)
+        {
+            string selectedAreas = areaCombo.Properties.GetCheckedItems() as string;
+            string[] areaNames = selectedAreas.Split(',');
+            string areaFilter = "'" + selectedAreas.Replace(", ", "','") + "'";
+            string selectedIndustries = industryCombo.Properties.GetCheckedItems() as string;
+            string[] industryNames = selectedIndustries.Split(',');
+            string industryFilter = "'" + selectedIndustries.Replace(", ", "','") + "'";
+            string filter = "";
+            totalStockView.BeginDataUpdate();
+            totalTable.Clear();
+            if (areaNames.Length != areaCombo.Properties.Items.Count)
+            {
+                filter = "areaname in (" + areaFilter + ")";
+
+            }
+            if (industryNames.Length != industryCombo.Properties.Items.Count)
+            {
+                if (filter.Trim().Length != 0)
+                {
+                    filter += " and ";
+                }
+                filter += "industryname in (" + industryFilter + ")";
+            }
+            
+            InitTableFromTable(totalTable, Commons.classificationTable, filter);
+            totalStockView.EndDataUpdate();
         }
     }
 }

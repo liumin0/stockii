@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupDialog));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupNameCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.deleteGroupButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.areaCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.industryCombo = new DevExpress.XtraEditors.ComboBoxEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.totalStockGrid = new DevExpress.XtraGrid.GridControl();
             this.totalStockView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -52,9 +51,9 @@
             this.selectStockView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.areaCombo = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.industryCombo = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNameCombo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areaCombo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.industryCombo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.totalStockGrid)).BeginInit();
@@ -64,6 +63,8 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.selectStockGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectStockView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaCombo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.industryCombo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -79,16 +80,14 @@
             this.groupNameCombo.Location = new System.Drawing.Point(54, 12);
             this.groupNameCombo.Name = "groupNameCombo";
             this.groupNameCombo.Properties.AutoComplete = false;
-            this.groupNameCombo.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.groupNameCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.groupNameCombo.Size = new System.Drawing.Size(158, 22);
+            this.groupNameCombo.Size = new System.Drawing.Size(158, 20);
             this.groupNameCombo.TabIndex = 1;
             this.groupNameCombo.SelectedIndexChanged += new System.EventHandler(this.groupNameCombo_SelectedIndexChanged);
             // 
             // deleteGroupButton
             // 
-            this.deleteGroupButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.deleteGroupButton.Location = new System.Drawing.Point(218, 11);
             this.deleteGroupButton.Name = "deleteGroupButton";
             this.deleteGroupButton.Size = new System.Drawing.Size(75, 23);
@@ -104,16 +103,6 @@
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "地区：";
             // 
-            // areaCombo
-            // 
-            this.areaCombo.Location = new System.Drawing.Point(361, 13);
-            this.areaCombo.Name = "areaCombo";
-            this.areaCombo.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.areaCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.areaCombo.Size = new System.Drawing.Size(82, 22);
-            this.areaCombo.TabIndex = 1;
-            // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(459, 16);
@@ -121,16 +110,6 @@
             this.labelControl3.Size = new System.Drawing.Size(36, 14);
             this.labelControl3.TabIndex = 0;
             this.labelControl3.Text = "行业：";
-            // 
-            // industryCombo
-            // 
-            this.industryCombo.Location = new System.Drawing.Point(501, 13);
-            this.industryCombo.Name = "industryCombo";
-            this.industryCombo.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.industryCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.industryCombo.Size = new System.Drawing.Size(138, 22);
-            this.industryCombo.TabIndex = 1;
             // 
             // groupControl1
             // 
@@ -218,7 +197,6 @@
             // 
             // addButton
             // 
-            this.addButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.addButton.Location = new System.Drawing.Point(284, 131);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
@@ -228,7 +206,6 @@
             // 
             // addAllButton
             // 
-            this.addAllButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.addAllButton.Location = new System.Drawing.Point(284, 189);
             this.addAllButton.Name = "addAllButton";
             this.addAllButton.Size = new System.Drawing.Size(75, 23);
@@ -238,7 +215,6 @@
             // 
             // clearButton
             // 
-            this.clearButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.clearButton.Location = new System.Drawing.Point(284, 246);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
@@ -248,7 +224,6 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.deleteButton.Location = new System.Drawing.Point(284, 305);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -258,7 +233,6 @@
             // 
             // okButton
             // 
-            this.okButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.okButton.Location = new System.Drawing.Point(172, 401);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
@@ -268,7 +242,6 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.cancelButton.Location = new System.Drawing.Point(408, 401);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
@@ -343,11 +316,34 @@
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
             // 
+            // areaCombo
+            // 
+            this.areaCombo.EditValue = "";
+            this.areaCombo.Location = new System.Drawing.Point(353, 14);
+            this.areaCombo.Name = "areaCombo";
+            this.areaCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.areaCombo.Size = new System.Drawing.Size(100, 20);
+            this.areaCombo.TabIndex = 4;
+            this.areaCombo.EditValueChanged += new System.EventHandler(this.areaCombo_EditValueChanged);
+            // 
+            // industryCombo
+            // 
+            this.industryCombo.Location = new System.Drawing.Point(501, 14);
+            this.industryCombo.Name = "industryCombo";
+            this.industryCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.industryCombo.Size = new System.Drawing.Size(133, 20);
+            this.industryCombo.TabIndex = 4;
+            this.industryCombo.EditValueChanged += new System.EventHandler(this.areaCombo_EditValueChanged);
+            // 
             // GroupDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 433);
+            this.Controls.Add(this.industryCombo);
+            this.Controls.Add(this.areaCombo);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.deleteButton);
@@ -357,20 +353,17 @@
             this.Controls.Add(this.addAllButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.deleteGroupButton);
-            this.Controls.Add(this.industryCombo);
             this.Controls.Add(this.labelControl3);
-            this.Controls.Add(this.areaCombo);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.groupNameCombo);
             this.Controls.Add(this.labelControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(672, 471);
             this.MinimumSize = new System.Drawing.Size(672, 471);
             this.Name = "GroupDialog";
-            this.Text = "GroupDialog";
+            this.Text = "分组";
             ((System.ComponentModel.ISupportInitialize)(this.groupNameCombo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.areaCombo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.industryCombo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.totalStockGrid)).EndInit();
@@ -380,6 +373,8 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.selectStockGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selectStockView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.areaCombo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.industryCombo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,9 +386,7 @@
         private DevExpress.XtraEditors.ComboBoxEdit groupNameCombo;
         private DevExpress.XtraEditors.SimpleButton deleteGroupButton;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit areaCombo;
         private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.ComboBoxEdit industryCombo;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SearchControl searchControl1;
         private DevExpress.XtraEditors.SimpleButton addButton;
@@ -411,5 +404,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView selectStockView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit areaCombo;
+        private DevExpress.XtraEditors.CheckedComboBoxEdit industryCombo;
     }
 }

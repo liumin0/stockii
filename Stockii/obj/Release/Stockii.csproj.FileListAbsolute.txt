@@ -28,3 +28,5 @@ C:\WorkSpace\stockii\Stockii\Stockii\obj\Release\Stockii.SplashScreen1.resources
 C:\WorkSpace\stockii\Stockii\Stockii\obj\Release\Stockii.WaitForm1.resources
 C:\WorkSpace\stockii\Stockii\Stockii\obj\Release\Stockii.csproj.GenerateResource.Cache
 C:\WorkSpace\stockii\Stockii\Stockii\obj\Release\Stockii.exe.licenses
+D:\workspace\vs\Stockii\Stockii\bin\Release\Stockii.exe.config
+D:\workspace\vs\Stockii\Stockii\obj\Release\Stockii.SettingDialog.resources

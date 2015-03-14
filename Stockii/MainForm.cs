@@ -139,14 +139,7 @@ namespace Stockii
                 }
             }
             int count = 1;
-            if (Constants.tableNameDict.Keys.Contains(e.Item.Tag.ToString()))
-            {
-                xpage.Text = Constants.tableNameDict[tableName];
-            }
-            else
-            {
-                xpage.Text = "未知查询";
-            }
+            xpage.Text = e.Item.Caption;
             
             while (true)
             {
@@ -330,5 +323,9 @@ namespace Stockii
             d.ShowDialog();
         }
 
+        public void ShowTextInStatusBar(string text)
+        {
+            autoCalResult.Caption = text;
+        }
     }
 }
