@@ -184,6 +184,7 @@
             this.searchControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.searchControl1.Client = this.totalStockGrid;
+            this.searchControl1.EditValue = "";
             this.searchControl1.Location = new System.Drawing.Point(6, 26);
             this.searchControl1.Name = "searchControl1";
             this.searchControl1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

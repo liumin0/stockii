@@ -56,6 +56,9 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.crossTab = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -64,9 +67,6 @@
             this.calTabControl = new DevExpress.XtraLayout.TabbedControlGroup();
             this.growthBoardTab = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.crossTab = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupInfoPanel = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel2_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -106,6 +106,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crossTab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -114,9 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.calTabControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.growthBoardTab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crossTab)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.groupInfoPanel.SuspendLayout();
             this.dockPanel2_Container.SuspendLayout();
@@ -163,8 +163,8 @@
             this.查询控制.Location = new System.Drawing.Point(0, 0);
             this.查询控制.Name = "查询控制";
             this.查询控制.Options.ShowCloseButton = false;
-            this.查询控制.OriginalSize = new System.Drawing.Size(243, 200);
-            this.查询控制.Size = new System.Drawing.Size(208, 352);
+            this.查询控制.OriginalSize = new System.Drawing.Size(208, 174);
+            this.查询控制.Size = new System.Drawing.Size(208, 251);
             this.查询控制.Text = "参数详情";
             // 
             // controlContainer1
@@ -172,7 +172,7 @@
             this.controlContainer1.Controls.Add(this.layoutControl1);
             this.controlContainer1.Location = new System.Drawing.Point(4, 23);
             this.controlContainer1.Name = "controlContainer1";
-            this.controlContainer1.Size = new System.Drawing.Size(200, 325);
+            this.controlContainer1.Size = new System.Drawing.Size(200, 224);
             this.controlContainer1.TabIndex = 0;
             // 
             // layoutControl1
@@ -193,8 +193,9 @@
             this.layoutControl1.Controls.Add(this.startDateEdit);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.HiddenItems.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.nDayCalTab,
             this.customCalTab,
-            this.nDayCalTab});
+            this.crossTab});
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1147, 229, 611, 513);
@@ -209,7 +210,7 @@
             this.layoutControl1.OptionsPrint.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.layoutControl1.OptionsPrint.AppearanceItemCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(200, 325);
+            this.layoutControl1.Size = new System.Drawing.Size(200, 224);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -217,10 +218,10 @@
             // 
             this.crossWeightEdit.Location = new System.Drawing.Point(99, 167);
             this.crossWeightEdit.Name = "crossWeightEdit";
-            this.crossWeightEdit.Properties.Mask.EditMask = "f";
+            this.crossWeightEdit.Properties.Mask.EditMask = "P";
             this.crossWeightEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.crossWeightEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.crossWeightEdit.Size = new System.Drawing.Size(77, 20);
+            this.crossWeightEdit.Size = new System.Drawing.Size(60, 20);
             this.crossWeightEdit.StyleController = this.layoutControl1;
             this.crossWeightEdit.TabIndex = 17;
             // 
@@ -239,7 +240,7 @@
             this.nDayCountSpin.Properties.Mask.BeepOnError = true;
             this.nDayCountSpin.Properties.Mask.EditMask = "d";
             this.nDayCountSpin.Properties.ValidateOnEnterKey = true;
-            this.nDayCountSpin.Size = new System.Drawing.Size(77, 20);
+            this.nDayCountSpin.Size = new System.Drawing.Size(60, 20);
             this.nDayCountSpin.StyleController = this.layoutControl1;
             this.nDayCountSpin.TabIndex = 2;
             // 
@@ -251,7 +252,7 @@
             this.calIndexCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calIndexCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.calIndexCombo.Size = new System.Drawing.Size(77, 20);
+            this.calIndexCombo.Size = new System.Drawing.Size(60, 20);
             this.calIndexCombo.StyleController = this.layoutControl1;
             this.calIndexCombo.TabIndex = 1;
             // 
@@ -263,7 +264,7 @@
             this.nDayTypeCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.nDayTypeCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.nDayTypeCombo.Size = new System.Drawing.Size(77, 20);
+            this.nDayTypeCombo.Size = new System.Drawing.Size(60, 20);
             this.nDayTypeCombo.StyleController = this.layoutControl1;
             this.nDayTypeCombo.TabIndex = 3;
             // 
@@ -275,13 +276,13 @@
             this.calTypeCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.calTypeCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.calTypeCombo.Size = new System.Drawing.Size(77, 20);
+            this.calTypeCombo.Size = new System.Drawing.Size(60, 20);
             this.calTypeCombo.StyleController = this.layoutControl1;
             this.calTypeCombo.TabIndex = 1;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(12, 203);
+            this.searchButton.Location = new System.Drawing.Point(12, 179);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(176, 22);
             this.searchButton.StyleController = this.layoutControl1;
@@ -310,7 +311,7 @@
             this.nDayIndexCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.nDayIndexCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.nDayIndexCombo.Size = new System.Drawing.Size(77, 20);
+            this.nDayIndexCombo.Size = new System.Drawing.Size(60, 20);
             this.nDayIndexCombo.StyleController = this.layoutControl1;
             this.nDayIndexCombo.TabIndex = 1;
             // 
@@ -326,7 +327,7 @@
             "周和",
             "月和"});
             this.nDayCategoryCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.nDayCategoryCombo.Size = new System.Drawing.Size(77, 20);
+            this.nDayCategoryCombo.Size = new System.Drawing.Size(60, 20);
             this.nDayCategoryCombo.StyleController = this.layoutControl1;
             this.nDayCategoryCombo.TabIndex = 1;
             this.nDayCategoryCombo.SelectedIndexChanged += new System.EventHandler(this.nDayCategoryCombo_SelectedIndexChanged);
@@ -339,7 +340,7 @@
             this.crossIndexCombo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.crossIndexCombo.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.crossIndexCombo.Size = new System.Drawing.Size(77, 20);
+            this.crossIndexCombo.Size = new System.Drawing.Size(60, 20);
             this.crossIndexCombo.StyleController = this.layoutControl1;
             this.crossIndexCombo.TabIndex = 11;
             // 
@@ -360,10 +361,11 @@
             // 
             // growthBoardWeightEdit
             // 
+            this.growthBoardWeightEdit.EditValue = "";
             this.growthBoardWeightEdit.Location = new System.Drawing.Point(99, 143);
             this.growthBoardWeightEdit.Name = "growthBoardWeightEdit";
             this.growthBoardWeightEdit.Properties.Mask.BeepOnError = true;
-            this.growthBoardWeightEdit.Properties.Mask.EditMask = "f";
+            this.growthBoardWeightEdit.Properties.Mask.EditMask = "P";
             this.growthBoardWeightEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.growthBoardWeightEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.growthBoardWeightEdit.Size = new System.Drawing.Size(77, 20);
@@ -398,13 +400,13 @@
             // 
             // customCalTab
             // 
-            this.customCalTab.CustomizationFormText = "Tab2";
+            this.customCalTab.CustomizationFormText = "自定义计算";
             this.customCalTab.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem10,
             this.layoutControlItem11});
             this.customCalTab.Location = new System.Drawing.Point(0, 0);
             this.customCalTab.Name = "customCalTab";
-            this.customCalTab.Size = new System.Drawing.Size(156, 48);
+            this.customCalTab.Size = new System.Drawing.Size(139, 48);
             this.customCalTab.Text = "自定义计算";
             // 
             // layoutControlItem10
@@ -413,7 +415,7 @@
             this.layoutControlItem10.CustomizationFormText = "方法：";
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem10.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem10.Text = "方法：";
             this.layoutControlItem10.TextSize = new System.Drawing.Size(36, 14);
             // 
@@ -423,13 +425,13 @@
             this.layoutControlItem11.CustomizationFormText = "指标：";
             this.layoutControlItem11.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem11.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem11.Text = "指标：";
             this.layoutControlItem11.TextSize = new System.Drawing.Size(36, 14);
             // 
             // nDayCalTab
             // 
-            this.nDayCalTab.CustomizationFormText = "Tab1";
+            this.nDayCalTab.CustomizationFormText = "N日和";
             this.nDayCalTab.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem6,
             this.layoutControlItem7,
@@ -437,7 +439,7 @@
             this.layoutControlItem9});
             this.nDayCalTab.Location = new System.Drawing.Point(0, 0);
             this.nDayCalTab.Name = "nDayCalTab";
-            this.nDayCalTab.Size = new System.Drawing.Size(156, 96);
+            this.nDayCalTab.Size = new System.Drawing.Size(139, 96);
             this.nDayCalTab.Text = "N日和";
             // 
             // layoutControlItem6
@@ -446,7 +448,7 @@
             this.layoutControlItem6.CustomizationFormText = "类别：";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem6.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem6.Text = "类别：";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(36, 14);
             // 
@@ -456,7 +458,7 @@
             this.layoutControlItem7.CustomizationFormText = "指标：";
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem7.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem7.Text = "指标：";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(36, 14);
             // 
@@ -466,7 +468,7 @@
             this.layoutControlItem8.CustomizationFormText = "数量：";
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 48);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem8.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem8.Text = "数量：";
             this.layoutControlItem8.TextSize = new System.Drawing.Size(36, 14);
             // 
@@ -476,9 +478,40 @@
             this.layoutControlItem9.CustomizationFormText = "类型：";
             this.layoutControlItem9.Location = new System.Drawing.Point(0, 72);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(156, 24);
+            this.layoutControlItem9.Size = new System.Drawing.Size(139, 24);
             this.layoutControlItem9.Text = "类型：";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(36, 14);
+            // 
+            // crossTab
+            // 
+            this.crossTab.CustomizationFormText = "跨区";
+            this.crossTab.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem12,
+            this.layoutControlItem13});
+            this.crossTab.Location = new System.Drawing.Point(0, 0);
+            this.crossTab.Name = "crossTab";
+            this.crossTab.Size = new System.Drawing.Size(139, 48);
+            this.crossTab.Text = "跨区";
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.crossIndexCombo;
+            this.layoutControlItem12.CustomizationFormText = "指标：";
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(139, 24);
+            this.layoutControlItem12.Text = "指标：";
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(36, 14);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.crossWeightEdit;
+            this.layoutControlItem13.CustomizationFormText = "权重：";
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(139, 24);
+            this.layoutControlItem13.Text = "权重：";
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(36, 14);
             // 
             // Root
             // 
@@ -494,7 +527,7 @@
             this.layoutControlItem5});
             this.Root.Location = new System.Drawing.Point(0, 0);
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(200, 325);
+            this.Root.Size = new System.Drawing.Size(200, 224);
             this.Root.Text = "Root";
             this.Root.TextVisible = false;
             // 
@@ -544,10 +577,9 @@
             this.calTabControl.Location = new System.Drawing.Point(0, 96);
             this.calTabControl.Name = "calTabControl";
             this.calTabControl.SelectedTabPage = this.growthBoardTab;
-            this.calTabControl.SelectedTabPageIndex = 1;
-            this.calTabControl.Size = new System.Drawing.Size(180, 95);
+            this.calTabControl.SelectedTabPageIndex = 0;
+            this.calTabControl.Size = new System.Drawing.Size(180, 71);
             this.calTabControl.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.crossTab,
             this.growthBoardTab});
             this.calTabControl.Text = "calTabControl";
             // 
@@ -558,7 +590,7 @@
             this.layoutControlItem14});
             this.growthBoardTab.Location = new System.Drawing.Point(0, 0);
             this.growthBoardTab.Name = "growthBoardTab";
-            this.growthBoardTab.Size = new System.Drawing.Size(156, 48);
+            this.growthBoardTab.Size = new System.Drawing.Size(156, 24);
             this.growthBoardTab.Text = "大盘轮动";
             // 
             // layoutControlItem14
@@ -567,48 +599,17 @@
             this.layoutControlItem14.CustomizationFormText = "权重：";
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(156, 48);
+            this.layoutControlItem14.Size = new System.Drawing.Size(156, 24);
             this.layoutControlItem14.Text = "权重：";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // crossTab
-            // 
-            this.crossTab.CustomizationFormText = "跨区";
-            this.crossTab.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem12,
-            this.layoutControlItem13});
-            this.crossTab.Location = new System.Drawing.Point(0, 0);
-            this.crossTab.Name = "crossTab";
-            this.crossTab.Size = new System.Drawing.Size(156, 48);
-            this.crossTab.Text = "跨区";
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.crossIndexCombo;
-            this.layoutControlItem12.CustomizationFormText = "指标：";
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(156, 24);
-            this.layoutControlItem12.Text = "指标：";
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(72, 14);
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.crossWeightEdit;
-            this.layoutControlItem13.CustomizationFormText = "权重：";
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 24);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(156, 24);
-            this.layoutControlItem13.Text = "权重：";
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(72, 14);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.searchButton;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 191);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 167);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(180, 114);
+            this.layoutControlItem5.Size = new System.Drawing.Size(180, 37);
             this.layoutControlItem5.Text = "layoutControlItem5";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
@@ -618,11 +619,11 @@
             this.groupInfoPanel.Controls.Add(this.dockPanel2_Container);
             this.groupInfoPanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.groupInfoPanel.ID = new System.Guid("b557799d-d53e-4234-b680-18a184d9e1cc");
-            this.groupInfoPanel.Location = new System.Drawing.Point(0, 352);
+            this.groupInfoPanel.Location = new System.Drawing.Point(0, 251);
             this.groupInfoPanel.Name = "groupInfoPanel";
             this.groupInfoPanel.Options.ShowCloseButton = false;
-            this.groupInfoPanel.OriginalSize = new System.Drawing.Size(200, 200);
-            this.groupInfoPanel.Size = new System.Drawing.Size(208, 141);
+            this.groupInfoPanel.OriginalSize = new System.Drawing.Size(208, 319);
+            this.groupInfoPanel.Size = new System.Drawing.Size(208, 242);
             this.groupInfoPanel.Text = "分组详情";
             // 
             // dockPanel2_Container
@@ -630,7 +631,7 @@
             this.dockPanel2_Container.Controls.Add(this.groupListBox);
             this.dockPanel2_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel2_Container.Name = "dockPanel2_Container";
-            this.dockPanel2_Container.Size = new System.Drawing.Size(200, 114);
+            this.dockPanel2_Container.Size = new System.Drawing.Size(200, 215);
             this.dockPanel2_Container.TabIndex = 0;
             // 
             // groupListBox
@@ -638,7 +639,7 @@
             this.groupListBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupListBox.Location = new System.Drawing.Point(0, 0);
             this.groupListBox.Name = "groupListBox";
-            this.groupListBox.Size = new System.Drawing.Size(200, 114);
+            this.groupListBox.Size = new System.Drawing.Size(200, 215);
             this.groupListBox.TabIndex = 0;
             // 
             // panelControl1
@@ -759,6 +760,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crossTab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -767,9 +771,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.calTabControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.growthBoardTab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crossTab)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.groupInfoPanel.ResumeLayout(false);
             this.dockPanel2_Container.ResumeLayout(false);

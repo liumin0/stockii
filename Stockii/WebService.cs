@@ -11,6 +11,12 @@ namespace Stockii
 {
     class WebService
     {
+          
+        public static bool Login(string userName, string passwd)
+        {
+            string passwdMd5 = Commons.MD5Encrypt(passwd);
+            return JSONHandler.Login(userName, passwdMd5);
+        }
         public static bool GetTradeDate(out DataSet ds)
         {
             return JSONHandler.CallApi("listtradedate", out ds);

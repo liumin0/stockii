@@ -114,6 +114,7 @@
             this.barButtonItem41 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem42 = new DevExpress.XtraBars.BarButtonItem();
             this.autoCalResult = new DevExpress.XtraBars.BarStaticItem();
+            this.statusText = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -130,7 +131,7 @@
             this.combineGrid = new DevExpress.XtraGrid.GridControl();
             this.combineView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.redoButton = new DevExpress.XtraEditors.SimpleButton();
+            this.clearButton = new DevExpress.XtraEditors.SimpleButton();
             this.undoButton = new DevExpress.XtraEditors.SimpleButton();
             this.dockPanel5 = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -220,9 +221,10 @@
             this.barButtonItem40,
             this.barButtonItem41,
             this.barButtonItem42,
-            this.autoCalResult});
+            this.autoCalResult,
+            this.statusText});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 66;
+            this.ribbon.MaxItemId = 67;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -363,6 +365,7 @@
             this.upBoardItem.Name = "upBoardItem";
             this.upBoardItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.upBoardItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.upBoardItem_ItemClick);
             // 
             // upMenu
             // 
@@ -661,6 +664,7 @@
             this.downBoardItem.Name = "downBoardItem";
             this.downBoardItem.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)(((DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText) 
             | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
+            this.downBoardItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.downBoardItem_ItemClick);
             // 
             // downMenu
             // 
@@ -813,6 +817,12 @@
             this.autoCalResult.Name = "autoCalResult";
             this.autoCalResult.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // statusText
+            // 
+            this.statusText.Id = 66;
+            this.statusText.Name = "statusText";
+            this.statusText.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -889,6 +899,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.autoCalResult, true);
+            this.ribbonStatusBar.ItemLinks.Add(this.statusText);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 692);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
@@ -917,7 +928,7 @@
             this.combinePanel.Controls.Add(this.dockPanel2_Container);
             this.combinePanel.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.combinePanel.ID = new System.Guid("ce0705cd-e3f1-48f2-a868-ce15365efbfb");
-            this.combinePanel.Location = new System.Drawing.Point(0, 0);
+            this.combinePanel.Location = new System.Drawing.Point(86, 147);
             this.combinePanel.Name = "combinePanel";
             this.combinePanel.Options.ShowCloseButton = false;
             this.combinePanel.OriginalSize = new System.Drawing.Size(941, 200);
@@ -926,6 +937,8 @@
             this.combinePanel.Size = new System.Drawing.Size(941, 545);
             this.combinePanel.Text = "拼接";
             this.combinePanel.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.combinePanel.Enter += new System.EventHandler(this.combinePanel_Enter);
+            this.combinePanel.Leave += new System.EventHandler(this.combinePanel_Leave);
             // 
             // dockPanel2_Container
             // 
@@ -970,7 +983,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.redoButton);
+            this.panelControl1.Controls.Add(this.clearButton);
             this.panelControl1.Controls.Add(this.undoButton);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 488);
@@ -978,30 +991,29 @@
             this.panelControl1.Size = new System.Drawing.Size(933, 30);
             this.panelControl1.TabIndex = 0;
             // 
-            // redoButton
+            // clearButton
             // 
-            this.redoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.redoButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.redoButton.Image = ((System.Drawing.Image)(resources.GetObject("redoButton.Image")));
-            this.redoButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.redoButton.Location = new System.Drawing.Point(470, 0);
-            this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(32, 32);
-            this.redoButton.TabIndex = 0;
-            this.redoButton.ToolTip = "重做";
+            this.clearButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.clearButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.clearButton.Location = new System.Drawing.Point(470, 0);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(32, 32);
+            this.clearButton.TabIndex = 0;
+            this.clearButton.Text = "清除";
+            this.clearButton.ToolTip = "重做";
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // undoButton
             // 
             this.undoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.undoButton.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
-            this.undoButton.Image = ((System.Drawing.Image)(resources.GetObject("undoButton.Image")));
             this.undoButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.undoButton.Location = new System.Drawing.Point(432, 0);
             this.undoButton.Name = "undoButton";
             this.undoButton.Size = new System.Drawing.Size(32, 32);
             this.undoButton.TabIndex = 0;
-            this.undoButton.Text = "simpleButton1";
+            this.undoButton.Text = "撤销";
             this.undoButton.ToolTip = "撤销";
+            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
             // 
             // dockPanel5
             // 
@@ -1190,9 +1202,10 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl combineGrid;
         private DevExpress.XtraGrid.Views.Grid.GridView combineView;
-        private DevExpress.XtraEditors.SimpleButton redoButton;
+        private DevExpress.XtraEditors.SimpleButton clearButton;
         private DevExpress.XtraEditors.SimpleButton undoButton;
-        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
+        private DevExpress.XtraBars.BarStaticItem statusText;
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager2;
     }
 }

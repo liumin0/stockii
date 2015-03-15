@@ -17,6 +17,7 @@ using DevExpress.Data;
 using DevExpress.XtraBars;
 using DevExpress.XtraLayout;
 using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraGrid;
 
 namespace Stockii
 {
@@ -30,6 +31,8 @@ namespace Stockii
         private string curGroupName = "";
         private int page = 1;
         private int totalPage = 1;
+        private string curFilter = "";
+        public string curStatusText = "";
         public CustomPage(MainForm mainForm, string calcType)
         {
             InitializeComponent();
@@ -70,7 +73,7 @@ namespace Stockii
 
         public bool WillShowUpDown()
         {
-            return !curCalcType.Equals("nDayCalTab");
+            return Constants.customSortList.Contains(curCalcType);
         }
 
         public void GetTime(out DateTime start, out DateTime end)
@@ -160,6 +163,7 @@ namespace Stockii
             if (!savedArgs.Keys.Contains("command") || curApiName != savedArgs["command"])
             {
                 gridView1.Columns.Clear();
+                
             }
             
             InsertColumns(dt);
@@ -172,8 +176,6 @@ namespace Stockii
             {
                 gridControl1.DataSource = dt;
             }
-            
-            RenameColumnHeader();
         }
 
         private void InsertColumns(DataTable dt)
@@ -182,6 +184,7 @@ namespace Stockii
             {
                 DataColumn c = dt.Columns.Add("stockname");
                 c.SetOrdinal(1);
+                
                 foreach (DataRow row in dt.Rows)
                 {
                     DataTable nameTable = Commons.classificationTable;
@@ -204,11 +207,31 @@ namespace Stockii
             {
                 if (Constants.translateDict.Keys.Contains(column.FieldName))
                 {
-                    column.Caption = Constants.translateDict[column.FieldName];
-                }
-                if (Constants.unitDict.Keys.Contains(column.FieldName))
-                {
-                    column.Caption += "(" + Constants.unitDict[column.FieldName] + ")";
+                    column.Caption = Constants.translateDict[column.FieldName].name;
+                    if (Constants.translateDict[column.FieldName].format.Trim().Length != 0)
+	                {
+		                column.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+                        if (Constants.translateDict[column.FieldName].format.Equals("#"))
+                        {
+                            switch (curCalcType)
+                            {
+                                case "nDayCalTab":
+                                    column.Caption = nDayIndexCombo.Text + "|" + nDayTypeCombo.Text + "|" + column.Caption + 
+                                                       "(" + Constants.translateDict[savedArgs["sumname"]].unit + ")";
+                                    break;
+                                case "customCalTab":
+                                    column.Caption = calIndexCombo.Text + "|" + calTypeCombo.Text + "|" + column.Caption +
+                                                       "(" + Constants.translateDict[savedArgs["optname"]].unit + ")";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            continue;
+                        }
+                        column.DisplayFormat.FormatString = Constants.translateDict[column.FieldName].format;
+                        column.Caption += "(" + Constants.translateDict[column.FieldName].unit + ")";
+	                }
+                    
                 }
             }
         }
@@ -217,7 +240,7 @@ namespace Stockii
         {
             Dictionary<string, string> args = new Dictionary<string, string>();
             #region 判断时间是否有效
-            /*
+            //*
             if (startDateEdit.DateTime > endDateEdit.DateTime)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("开始时间大于结束时间，请重新输入");
@@ -341,10 +364,29 @@ namespace Stockii
             {
                 return;
             }
-            DoSearch(args);
+            if (DoSearch(args))
+            {
+                curFilter = "";
+                curStatusText = "";
+                parentForm.ShowStatusInStatusBar(curStatusText);
+            }
         }
 
-        private void DoSearch(Dictionary<string, string> args)
+        public void DoFilterSearch(string filter)
+        {
+            Dictionary<string, string> args = getSearchArgs(curCalcType);
+            if (args == null)
+            {
+                return;
+            }
+            args["filter"] = filter;
+            if (DoSearch(args))
+            {
+                curFilter = filter;
+            }
+        }
+
+        private bool DoSearch(Dictionary<string, string> args)
         {
             parentForm.ShowWaitForm();
             bool ret = true;
@@ -367,9 +409,9 @@ namespace Stockii
                     //page += (pageSize / 1000 - 1);
                     totalPage = tmpTotalPage;
                     BindData(dt, page != 1);
-
-                    pageLabel.Text = page + "/" + totalPage;
                     savedArgs = args;
+                    RenameColumnHeader();
+                    pageLabel.Text = page + "/" + totalPage;
                 }
             } while (false);
 
@@ -377,7 +419,9 @@ namespace Stockii
             if (!ret)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("查询结果为空");
+                return false;
             }
+            return true;
         }
 
         private void tradeDatesEdit_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
@@ -396,7 +440,6 @@ namespace Stockii
                     e.Cancel = true;
                     DevExpress.XtraEditors.XtraMessageBox.Show("超出交易日范围");
                 }
-
             }
             else
             {
@@ -451,8 +494,12 @@ namespace Stockii
                 e.Menu.Items.Clear();
                 AddRightMenu(e.Menu, "导出本页", true);
                 AddRightMenu(e.Menu, "打印本页", false);
-                AddRightMenu(e.Menu, "拼接选中行", true);
-                AddRightMenu(e.Menu, "拼接本页", false);
+                if (!Constants.customSortList.Contains(curCalcType))
+                {
+                    AddRightMenu(e.Menu, "拼接选中行", true);
+                    AddRightMenu(e.Menu, "拼接本页", false);
+                }
+                
                 AddRightMenu(e.Menu, "新建分组", true);
             }
         }
@@ -478,8 +525,10 @@ namespace Stockii
                     parentForm.Print(gridControl1);
                     break;
                 case "拼接选中行":
+                    parentForm.Combine(gridControl1, true);
                     break;
                 case "拼接本页":
+                    parentForm.Combine(gridControl1, false);
                     break;
                 case "新建分组":
                     int []rowIds = gridView1.GetSelectedRows();
@@ -567,6 +616,10 @@ namespace Stockii
                             args["asc"] = "false";
                         else
                             args["asc"] = "true";
+                        if (curFilter.Trim().Length != 0)
+                        {
+                            args["filter"] = curFilter;
+                        }
                         DoSearch(args);
                     }
 
@@ -642,14 +695,17 @@ namespace Stockii
             }
             if (count == 0 )
             {
-                parentForm.ShowTextInStatusBar("");
+                parentForm.ShowResultInStatusBar("");
                 return;
             }
             avg = count != 0 ? total / count : 0;
-            parentForm.ShowTextInStatusBar(string.Format("个数：{0}    均值：{1:f4}    最大：{2:f4}    最小：{3:f4}    求和：{4:f4}                       ",
+            parentForm.ShowResultInStatusBar(string.Format("个数：{0}    均值：{1:f4}    最大：{2:f4}    最小：{3:f4}    求和：{4:f4}                       ",
                                             count, avg, max, min, total));
         }
-
         
+        public GridControl GetGridControl()
+        {
+            return gridControl1;
+        }
     }
 }

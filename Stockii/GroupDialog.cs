@@ -88,9 +88,9 @@ namespace Stockii
             foreach (DataRow row in fromTable.Select(filter))
             {
                 DataRow dr = table.NewRow();
-                dr[0] = row["stockid"];
-                dr[1] = row["stockname"];
-                totalTable.Rows.Add(dr);
+                dr[0] = row["stockid"].ToString();
+                dr[1] = row["stockname"].ToString();
+                table.Rows.Add(dr);
             }
         }
 

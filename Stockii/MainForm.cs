@@ -16,12 +16,15 @@ using System.Collections;
 using System.Xml.Serialization;
 using DevExpress.XtraGrid;
 using DevExpress.Utils.Menu;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Stockii
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private CustomPage curPage = null;
+        private string upDownType = "";
+        private GridControl curActiveGrid = null;
         public MainForm()
         {
             InitializeComponent();
@@ -66,9 +69,16 @@ namespace Stockii
 
         private void upDownClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Console.WriteLine(sender);
-            
-            Console.WriteLine(e.Item.Tag);
+            if (upDownType.Equals("FLAG_UP__"))
+            {
+		        curPage.curStatusText = "向上跨区： " + e.Item.Caption;
+	        }
+            else
+            {
+                curPage.curStatusText = "向下跨区： " + e.Item.Caption;
+            }
+            ShowStatusInStatusBar(curPage.curStatusText);
+            curPage.DoFilterSearch(upDownType + e.Item.Tag);
         }
 
         private void InitIndustryMenu()
@@ -116,6 +126,11 @@ namespace Stockii
             //this.Enabled = true;
         }
 
+        /// <summary>
+        /// 功能切换按钮响应
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             
@@ -124,13 +139,13 @@ namespace Stockii
             CustomPage page = new CustomPage(this, tableName);
             if (curPage != null)
             {
-                if (Commons.property.KeepTime)
+                if (Commons.property.KeepTime == Property.CustomBool.是)
                 {
                     DateTime start, end;
                     curPage.GetTime(out start, out end);
                     page.SetTime(start, end);
                 }
-                if (Commons.property.KeepGroup)
+                if (Commons.property.KeepGroup == Property.CustomBool.是)
                 {
                     string groupName;
                     List<string> stockIds;
@@ -144,7 +159,7 @@ namespace Stockii
             while (true)
             {
                 bool ok = true;
-                foreach (XtraTabPage pg in xtraTabControl1.TabPages)
+                foreach (XtraTabPage pg in xtraTabControl1.TabPages) //判断tab的名称是否有重复
                 {
                     if (pg.Text.Equals(xpage.Text + count))
                     {
@@ -158,7 +173,7 @@ namespace Stockii
                     break;
                 }
             }
-            
+            curActiveGrid = page.GetGridControl();
             xpage.Text += count;
             page.Dock = DockStyle.Fill;
             xpage.Controls.Add(page);//添加要增加的控件
@@ -182,11 +197,18 @@ namespace Stockii
             //System.Threading.Thread.Sleep(3000);
             //CloseWaitForm();
             //customXtraGrid1.gridControl1.ShowPrintPreview();
+            if (curActiveGrid != null)
+            {
+                curActiveGrid.ShowPrintPreview();
+            }
         }
 
         private void dumpItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            if (curActiveGrid != null)
+            {
+                Export(curActiveGrid);
+            }
         }
 
         public void Print(GridControl grid)
@@ -309,6 +331,7 @@ namespace Stockii
         {
             XtraTabPage page = e.Page;
             curPage = page.Controls[0] as CustomPage;
+            ShowStatusInStatusBar(curPage.curStatusText);
             updownPanelGroup.Visible = curPage.WillShowUpDown();
         }
 
@@ -323,9 +346,60 @@ namespace Stockii
             d.ShowDialog();
         }
 
-        public void ShowTextInStatusBar(string text)
+        public void ShowResultInStatusBar(string text)
         {
             autoCalResult.Caption = text;
+        }
+
+        public void ShowStatusInStatusBar(string text)
+        {
+            statusText.Caption = text;
+        }
+
+        private void upBoardItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            upDownType = "FLAG_UP__";
+        }
+
+        private void downBoardItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            upDownType = "FLAG_DOWN__";
+        }
+
+        public void Combine(GridControl control, bool isSelect)
+        {
+            Commons.Combine(control, combineGrid, isSelect);
+        }
+
+        private void undoButton_Click(object sender, EventArgs e)
+        {
+            DataTable table = combineGrid.DataSource as DataTable;
+            combineView.Columns.Clear();
+            combineGrid.DataSource = Commons.combineSaveTable;
+            Commons.combineSaveTable = table;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            combineView.Columns.Clear();
+            DataTable table = combineGrid.DataSource as DataTable;
+            Commons.combineSaveTable = table;
+            combineGrid.DataSource = null;
+        }
+
+        private void combinePanel_Enter(object sender, EventArgs e)
+        {
+            Console.WriteLine("enter");
+            curActiveGrid = combineGrid;
+        }
+
+        private void combinePanel_Leave(object sender, EventArgs e)
+        {
+            Console.WriteLine("leave");
+            if (curPage != null)
+            {
+                curActiveGrid = curPage.GetGridControl();
+            }
         }
     }
 }

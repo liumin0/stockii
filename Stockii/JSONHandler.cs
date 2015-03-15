@@ -20,7 +20,8 @@ namespace Stockii
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
         //public static string localURL = "http://192.168.1.220:8080/client/api";
-        public static string localURL = "http://www.stockii.com:8090/client/api"; 
+        public static string localURL = "http://www.stockii.com:8090/client/api";
+        public static string loginUrl = "http://www.stockii.com/interface/authentication";
 
         /// <summary>
         /// 将JSON解析成DataSet只限标准的JSON数据
@@ -306,6 +307,35 @@ namespace Stockii
                 totalpage = Convert.ToInt32(num) / Convert.ToInt32(args["pagesize"]) + 1;
             }
             return true;
+        }
+
+        internal static bool Login(string userName, string passwd)
+        {
+            string jsonText = "";
+            bool ret = false;
+            Dictionary<string, string> args = new Dictionary<string, string>();
+            args["mid"] = userName;
+            args["password"] = passwd;
+            args["type"] = "stockiiPanel";
+            try
+            {
+                jsonText = Http.Get(loginUrl, args);
+                JObject jo = (JObject)JsonConvert.DeserializeObject(jsonText);
+                Commons.permissionLevel = Convert.ToInt32(jo["permissionLevel"].ToString());
+                Commons.token = jo["token"].ToString();
+                if (Commons.permissionLevel > 0)
+                {
+                    ret = true;
+                }
+                
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+            return ret;
         }
     }
 }

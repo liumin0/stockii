@@ -41,7 +41,7 @@
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(131, 14);
             this.labelControl1.TabIndex = 6;
-            this.labelControl1.Text = "Copyright © 1998-2013";
+            this.labelControl1.Text = "Copyright © 2014-2015";
             // 
             // labelControl2
             // 
