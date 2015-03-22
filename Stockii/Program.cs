@@ -1,4 +1,5 @@
 ﻿using DevExpress.Internal;
+using Stockii.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Stockii
                 } 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainForm());
+                Application.Run(new Login());
             }
         }
     }

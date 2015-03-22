@@ -19,8 +19,10 @@ using System.Xml.Serialization;
 
 namespace Stockii
 {
+    
     public class Commons
     {
+
         public static List<DateTime> tradeDates = new List<DateTime>();
         public static DataTable classificationTable = new DataTable();
         public static SerializableDictionary<String, List<string>> groupDict = new SerializableDictionary<string, List<string>>();
@@ -28,9 +30,21 @@ namespace Stockii
         public static Dictionary<String, List<string>> industryDict = new Dictionary<string, List<string>>();
         public static List<BarCheckItem> menuItems = new List<BarCheckItem>();
         public static Property property = LoadProperty();
-        public static DataTable combineSaveTable = new DataTable();
+        public static DataTable combineUndoTable = new DataTable();
+        public static SerializableDictionary<String, List<SavedAction>> combineDict = LoadCombine();
+        public static List<SavedAction> combineUndoActions = new List<SavedAction>();
+        public static List<SavedAction> combineCurActions = new List<SavedAction>();
+        public static Dictionary<string, string> userInfos = new Dictionary<string, string>();
+        public static List<BarItem> unUseRibbonItems = new List<BarItem>();
         public static string token = "";
         public static int permissionLevel = 0;
+
+        [Serializable]
+        public class SavedAction
+        {
+            public List<string> headers = new List<string>();
+            public SerializableDictionary<string, string> args = new SerializableDictionary<string, string>();
+        }
         /// <summary>
         /// 初始化所有全局变量
         /// </summary>
@@ -39,6 +53,7 @@ namespace Stockii
         {
             if (!InitTradeDate())
             {
+                
                 DevExpress.XtraEditors.XtraMessageBox.Show("初始化交易日信息失败");
                 return false;
             }
@@ -53,15 +68,23 @@ namespace Stockii
 
         private static void LoadGroupInfo()
         {
-            if (File.Exists(Constants.groupConfigPath))
+            try
             {
-                using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Open))
+                if (File.Exists(Constants.groupConfigPath))
                 {
-                    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
-                    groupDict = (SerializableDictionary<string, List<string>>)xmlFormatter.Deserialize(fileStream);
-                }
+                    groupDict = MySerializer.LoadFromXml(Constants.groupConfigPath, groupDict.GetType()) as SerializableDictionary<String, List<string>>;
+                    //using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Open))
+                    //{
+                    //    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
+                    //    groupDict = (SerializableDictionary<string, List<string>>)xmlFormatter.Deserialize(fileStream);
+                    //}
 
+                }
             }
+            catch (Exception)
+            {
+            }
+            
             groupDict["全部股票"] = new List<string>();
         }
 
@@ -98,7 +121,7 @@ namespace Stockii
                         industryDict[industryName].Add(row["stockid"].ToString().Trim());
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     ret = false;
                 }
@@ -153,15 +176,72 @@ namespace Stockii
         }
 
         /// <summary>
+        /// 计算当前日期n个交易日之后的日期
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="count"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool AddTradeDay(DateTime date, int count, out DateTime result)
+        {
+            DateTime riqi = Convert.ToDateTime(date.ToShortDateString() + "T00:00:00" + date.ToString("zzz"));
+            result = riqi;
+            int index = -1;
+            for (int i = 0; i < tradeDates.Count; i++)
+            {
+                if (tradeDates[i] >= riqi)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            if (index < 0 || index + count >= tradeDates.Count)
+            {
+                return false;
+            }
+            result = tradeDates[index + count];
+            return true;
+        }
+
+        /// <summary>
+        /// 计算当前日期n个交易日之前的日期
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="count"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool MinusTradeDay(DateTime date, int count, out DateTime result)
+        {
+            DateTime riqi = Convert.ToDateTime(date.ToShortDateString() + "T00:00:00" + date.ToString("zzz"));
+            result = riqi;
+            int index = -1;
+            for (int i = tradeDates.Count - 1; i >= 0; i--)
+            {
+                if (tradeDates[i] <= riqi)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            if (index < 0 || index - count < 0)
+            {
+                return false;
+            }
+            result = tradeDates[index - count];
+            return true;
+        }
+
+        /// <summary>
         /// 保存分组信息
         /// </summary>
         public static void SaveGroup()
         {
-            using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Create))
-            {
-                XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
-                xmlFormatter.Serialize(fileStream, groupDict);
-            }
+            MySerializer.SaveToXml(Constants.groupConfigPath, groupDict);
+            //using (FileStream fileStream = new FileStream(Constants.groupConfigPath, FileMode.Create))
+            //{
+            //    XmlSerializer xmlFormatter = new XmlSerializer(typeof(SerializableDictionary<string, List<string>>));
+            //    xmlFormatter.Serialize(fileStream, groupDict);
+            //}
         }
 
         /// <summary>
@@ -190,12 +270,13 @@ namespace Stockii
         /// </summary>
         public static void SaveProperty()
         {
-            IFormatter formatter = new BinaryFormatter();
+            MySerializer.SaveToXml(Constants.propertyPath, property);
+            //IFormatter formatter = new BinaryFormatter();
 
-            Stream stream = new FileStream(Constants.propertyPath, FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, property);
+            //Stream stream = new FileStream(Constants.propertyPath, FileMode.Create, FileAccess.Write, FileShare.None);
+            //formatter.Serialize(stream, property);
 
-            stream.Close(); 
+            //stream.Close(); 
         }
 
         /// <summary>
@@ -208,12 +289,13 @@ namespace Stockii
             {
                 if (File.Exists(Constants.propertyPath))
                 {
-                    using (FileStream stream = new FileStream(Constants.propertyPath, FileMode.Open, FileAccess.Read))
-                    {
-                        BinaryFormatter binary = new BinaryFormatter();
-                        Property property = (Property)binary.Deserialize(stream);
-                        return property;
-                    }
+                    return MySerializer.LoadFromXml(Constants.propertyPath, typeof(Property)) as Property;
+                    //using (FileStream stream = new FileStream(Constants.propertyPath, FileMode.Open, FileAccess.Read))
+                    //{
+                    //    BinaryFormatter binary = new BinaryFormatter();
+                    //    Property property = (Property)binary.Deserialize(stream);
+                    //    return property;
+                    //}
                 }
             }
             catch (Exception)
@@ -223,22 +305,66 @@ namespace Stockii
             return new Property();
         }
 
+        /// <summary>
+        /// 保存拼接表中的数据，undo的时候恢复
+        /// </summary>
+        /// <param name="combineControl"></param>
+        public static void SaveToUndo(GridControl combineControl)
+        {
+            DataTable combineTable = combineControl.DataSource as DataTable;
+            if (combineTable != null)
+            {
+                combineUndoTable = combineTable.Copy();
+                combineUndoActions.Clear();
+                foreach (SavedAction action in combineCurActions)
+                {
+                    combineUndoActions.Add(action);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 拼接表中的数据绑定
+        /// </summary>
+        /// <param name="combineControl"></param>
+        /// <param name="dt"></param>
+        public static void BindCombineData(GridControl combineControl, DataTable dt)
+        {
+            GridView combineGridView = combineControl.MainView as GridView;
+            combineGridView.Columns.Clear();
+            combineControl.DataSource = dt;
+        }
+
+        /// <summary>
+        /// 执行拼接操作
+        /// </summary>
+        /// <param name="srcControl">原表</param>
+        /// <param name="combineControl">拼接表</param>
+        /// <param name="isSelect">是否是拼接选中</param>
         public static void Combine(GridControl srcControl, GridControl combineControl, bool isSelect)
         {
+            
             GridView dataGridView = srcControl.MainView as GridView;
             GridView combineGridView = combineControl.MainView as GridView;
             DataTable tb1 = srcControl.DataSource as DataTable;
             DataTable tb2 = new DataTable();//临时表
-            DataTable combineTable = combineControl.DataSource as DataTable;
-            if (combineTable != null)
+            SaveToUndo(combineControl);
+            SavedAction act = new SavedAction();
+            Dictionary<string,string> args = srcControl.Tag as Dictionary<string, string>;
+            foreach (string key in args.Keys)
             {
-                combineSaveTable = combineTable.Copy();
+                if (!key.Equals("stockid") && !key.Equals("starttime") && !key.Equals("endtime"))
+                {
+                    act.args[key] = args[key];
+                }
             }
-            
             foreach (GridColumn c in dataGridView.Columns)
             {
-                tb2.Columns.Add(c.Caption);
+                tb2.Columns.Add(c.Caption, c.ColumnType);
+                act.headers.Add(c.Caption);
             }
+            combineCurActions.Add(act);
+            
             //生成临时表保存选中或全部列
             if (isSelect)
             {
@@ -269,8 +395,7 @@ namespace Stockii
             if (combineGridView.RowCount > 0)
             {
                 DataTable tb3 = combineControl.DataSource as DataTable;
-                combineGridView.Columns.Clear();
-                combineControl.DataSource = CombineDt(tb2, tb3);
+                BindCombineData(combineControl, CombineDt(tb2, tb3));
             }
             else
             {
@@ -278,6 +403,12 @@ namespace Stockii
             }
         }
 
+        /// <summary>
+        /// 拼接两个DataTable
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="combineDt"></param>
+        /// <returns></returns>
         public static DataTable CombineDt(DataTable table, DataTable combineDt)
         {
             DataTable tb2 = table;
@@ -396,15 +527,16 @@ namespace Stockii
             if (hostDt != null)
             {
                 DataRow dr;
-                int count = 0;
+                
                 for (int i = 0; i < clientDt.Columns.Count; i++)
                 {
                     string colName = clientDt.Columns[i].ColumnName;
+                    int count = 0;
                     while (hostDt.Columns.Contains(colName))
                     {
                         colName = clientDt.Columns[i].ColumnName + ++count;
                     }
-                    hostDt.Columns.Add(new DataColumn(clientDt.Columns[i].ColumnName + count));
+                    hostDt.Columns.Add(clientDt.Columns[i].ColumnName + count, clientDt.Columns[i].DataType);
 
                     if (clientDt.Rows.Count > 0)
                         for (int j = 0; j < clientDt.Rows.Count; j++)
@@ -417,6 +549,11 @@ namespace Stockii
             }
         }
 
+        /// <summary>
+        /// MD5加密算法
+        /// </summary>
+        /// <param name="strText">待加密字符串</param>
+        /// <returns></returns>
         public static string MD5Encrypt(string strText)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
@@ -427,6 +564,118 @@ namespace Stockii
                 sb.Append(retVal[i].ToString("X2"));
             }
             return sb.ToString();  
-        } 
+        }
+
+        /// <summary>
+        /// 保存拼接操作
+        /// </summary>
+        /// <param name="name"></param>
+        public static void SaveCombine(string name)
+        {
+            if (!combineDict.Keys.Contains(name))
+	        {
+                List<SavedAction> act = new List<SavedAction>();
+                combineCurActions.ForEach(i => act.Add(i));
+                combineDict[name] = act;
+                MySerializer.SaveToXml(Constants.combinePath, combineDict);
+	        }
+        }
+
+        /// <summary>
+        /// 加载保存的拼接操作
+        /// </summary>
+        /// <returns></returns>
+        public static SerializableDictionary<String, List<SavedAction>> LoadCombine()
+        {
+            try
+            {
+                return MySerializer.LoadFromXml(Constants.combinePath, typeof(SerializableDictionary<String, List<SavedAction>>)) as SerializableDictionary<String, List<SavedAction>>;
+            }
+            catch (Exception)
+            {
+            }
+            return new SerializableDictionary<String, List<SavedAction>>();
+        }
+
+        /// <summary>
+        /// 判断开始和结束时间是否有效
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public static bool ValidateDate(DateTime start, DateTime end)
+        {
+            #region 判断时间是否有效
+            //*
+            if (start > end)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("开始时间大于结束时间，请重新输入");
+                return false;
+            }
+            if (!Commons.IsTradeDay(start))
+            {
+                //TODO
+                DevExpress.XtraEditors.XtraMessageBox.Show("开始时间非交易日，请重新输入");
+                return false;
+            }
+            if (!Commons.IsTradeDay(end))
+            {
+                //TODO
+                DevExpress.XtraEditors.XtraMessageBox.Show("结束时间非交易日，请重新输入");
+                return false;
+            }
+            //*/
+            return true;
+            #endregion
+        }
+
+        /// <summary>
+        /// 加载用户信息
+        /// </summary>
+        public static void LoadUserInfo()
+        {
+            if (File.Exists(Constants.userInfoPath))
+            {
+                FileStream fileStream = new FileStream(Constants.userInfoPath, FileMode.Open, FileAccess.Read);
+                StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
+                fileStream.Seek(0, SeekOrigin.Begin);
+                string content = streamReader.ReadLine();
+                while (content != null)
+                {
+                    string text = Crypto.DecryptDES(content.Trim());
+                    string[] splitText = text.Split(' ');
+                    try
+                    {
+                        userInfos[splitText[0]] = splitText[1];
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    content = streamReader.ReadLine();
+                }
+                streamReader.Close();
+                fileStream.Close();
+            }
+        }
+
+        /// <summary>
+        /// 保存用户信息
+        /// </summary>
+        public static void SaveUserInfo()
+        {
+
+            FileStream fileStream = new FileStream(Constants.userInfoPath, FileMode.Create, FileAccess.Write);
+            StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.Default);
+            fileStream.Seek(0, SeekOrigin.Begin);
+            foreach (string key in userInfos.Keys)
+            {
+                string text = key + " " + userInfos[key];
+                string encryptText = Crypto.EncryptDES(text);
+                streamWriter.WriteLine(encryptText);
+            }
+            streamWriter.Close();
+            fileStream.Close();
+        }
+
     }
 }

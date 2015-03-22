@@ -8,7 +8,7 @@
     <ProjectGuid>{A3E9B92E-54A9-439E-9F19-7333D055424B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Stockii</RootNamespace>
+    <RootNamespace>Stockii.UI</RootNamespace>
     <AssemblyName>Stockii</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -73,75 +73,99 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
-    <Compile Include="CustomPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomPage.Designer.cs">
-      <DependentUpon>CustomPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CustomXtraGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomXtraGrid.Designer.cs">
-      <DependentUpon>CustomXtraGrid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GroupDialog.cs">
+    <Compile Include="Crypto.cs" />
+    <Compile Include="GridCommons.cs" />
+    <Compile Include="UI\AutoCombine.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GroupDialog.Designer.cs">
+    <Compile Include="UI\AutoCombine.Designer.cs">
+      <DependentUpon>AutoCombine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CustomPage.Designer.cs">
+      <DependentUpon>CustomPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomXtraGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CustomXtraGrid.Designer.cs">
+      <DependentUpon>CustomXtraGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GroupDialog.Designer.cs">
       <DependentUpon>GroupDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Http.cs" />
     <Compile Include="JSONHandler.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="UI\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="UI\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="UI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
-    <Compile Include="SerializableDictionary.cs" />
-    <Compile Include="SettingDialog.cs">
+    <Compile Include="UI\RibbonManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingDialog.Designer.cs">
+    <Compile Include="UI\RibbonManage.Designer.cs">
+      <DependentUpon>RibbonManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SaveAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SaveAction.Designer.cs">
+      <DependentUpon>SaveAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializableDictionary.cs" />
+    <Compile Include="UI\SettingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SettingDialog.Designer.cs">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="SplashScreen1.cs">
+    <Compile Include="UI\SplashScreen1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashScreen1.Designer.cs">
+    <Compile Include="UI\SplashScreen1.Designer.cs">
       <DependentUpon>SplashScreen1.cs</DependentUpon>
     </Compile>
     <Compile Include="Commons.cs" />
-    <Compile Include="WaitForm1.cs">
+    <Compile Include="UI\WaitForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WaitForm1.Designer.cs">
+    <Compile Include="UI\WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="WebService.cs" />
-    <EmbeddedResource Include="CustomPage.resx">
+    <EmbeddedResource Include="UI\AutoCombine.resx">
+      <DependentUpon>AutoCombine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CustomPage.resx">
       <DependentUpon>CustomPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomXtraGrid.resx">
+    <EmbeddedResource Include="UI\CustomXtraGrid.resx">
       <DependentUpon>CustomXtraGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GroupDialog.resx">
+    <EmbeddedResource Include="UI\GroupDialog.resx">
       <DependentUpon>GroupDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="UI\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -155,13 +179,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SettingDialog.resx">
+    <EmbeddedResource Include="UI\RibbonManage.resx">
+      <DependentUpon>RibbonManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SaveAction.resx">
+      <DependentUpon>SaveAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SettingDialog.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen1.resx">
+    <EmbeddedResource Include="UI\SplashScreen1.resx">
       <DependentUpon>SplashScreen1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WaitForm1.resx">
+    <EmbeddedResource Include="UI\WaitForm1.resx">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />

@@ -19,7 +19,7 @@ namespace Stockii
     static class JSONHandler
     {
         public static string commonURL = "http://stockii-gf.oicp.net/client/api";
-        //public static string localURL = "http://192.168.1.220:8080/client/api";
+        //public static string localURL = "http://192.168.1.111:8080/client/api";
         public static string localURL = "http://www.stockii.com:8090/client/api";
         public static string loginUrl = "http://www.stockii.com/interface/authentication";
 
@@ -273,6 +273,7 @@ namespace Stockii
             ds = null;
             try
             {
+                args["token"] = Commons.token;
                 jsonText = Http.Get(localURL, args);
             }
             catch (IOException ex)

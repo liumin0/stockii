@@ -11,7 +11,9 @@ namespace Stockii
         public static string configDir = System.Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Stockii";
         public static string dockLayoutPath = configDir + "\\dockLayout.xml";
         public static string groupConfigPath = configDir + "\\groupInfo.xml";
-        public static string propertyPath = configDir + "\\property.dat";
+        public static string propertyPath = configDir + "\\property.xml";
+        public static string combinePath = configDir + "\\combine.xml";
+        public static string userInfoPath = configDir + "\\userInfo.dat";
 
         public static List<string> customSortList = new List<string> {
                 "liststockdayinfo",
@@ -144,7 +146,7 @@ namespace Stockii
                 {"bull_stop_losses", new IndexInfo("bull_stop_losses", "多头止损", "元", "f2")},                                                                 
                 {"short_covering", new IndexInfo("short_covering", "空头回补", "", "f2")},                                                                 
                 {"bear_stop_losses", new IndexInfo("bear_stop_losses", "空头止损", "", "f2")},                                                                 
-                {"relative_strenth_index", new IndexInfo("relative_strength_index", "强弱度", "", "f2")},                                                                 
+                {"relative_strength_index", new IndexInfo("relative_strength_index", "强弱度", "", "f2")},                                                                 
                 {"activity", new IndexInfo("activity", "活跃度", "", "f2")},                                                                 
                 {"num_per_deal", new IndexInfo("num_per_deal", "每笔均量", "", "f2")},                                                                 
                 {"turn_per_deal", new IndexInfo("turn_per_deal", "每笔换手", "", "f2")},                                                                 
@@ -299,5 +301,16 @@ namespace Stockii
             #endregion
         };
         
+        public static string GetKeyByValue(Dictionary<string, string>dict, string value)
+        {
+            foreach (KeyValuePair<string, string> pair in dict)
+            {
+                if (pair.Value.Equals(value))
+                {
+                    return pair.Key;
+                }
+            }
+            return "未知";
+        }
     }
 }

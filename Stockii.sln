@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stockii", "Stockii\Stockii.csproj", "{A3E9B92E-54A9-439E-9F19-7333D055424B}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Setup1", "Setup1\Setup1.isproj", "{9C5A2E49-6CEE-4A10-BA17-A9222DA4F0F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A3E9B92E-54A9-439E-9F19-7333D055424B} = {A3E9B92E-54A9-439E-9F19-7333D055424B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
